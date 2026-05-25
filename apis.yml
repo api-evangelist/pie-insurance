@@ -1,0 +1,162 @@
+aid: pie-insurance
+name: Pie Insurance
+description: >-
+  Pie Insurance is a Washington, DC and Denver-based insurtech founded in May
+  2017 that makes commercial insurance for small businesses, with workers'
+  compensation as its flagship line. Pie underwrites its own workers' comp
+  through The Pie Insurance Company (NAIC 21857) — the carrier formerly known
+  as Pie Casualty Insurance Company, which Pie acquired as Western Select
+  Insurance Company in 2021 and took full-stack in February 2023 with an A-
+  (Excellent) rating from AM Best. In addition to workers' comp, Pie offers
+  business owners policy (BOP), commercial auto, general liability,
+  professional liability, and errors and omissions through partner carriers.
+  The product is sold both direct-to-business and through a partner network of
+  4,000+ independent insurance agencies, who quote, bind, and service policies
+  via the Pie agency portal and the Pie Partner API. The Partner API
+  (api.post-prod.pieinsurance.com, REST/JSON, documented with OpenAPI 3.0.4)
+  exposes class-code search, eligibility questions, appetite checks, price
+  indications, full bindable quotes, quote documents, and quote PDF retrieval
+  so agency management systems and partner platforms can embed the Pie
+  workers' comp experience without redirecting users off-platform. Coverage
+  is available in 39 states plus DC; 73% of submissions are auto-decided and
+  average quote time is roughly three minutes. The company has raised
+  approximately $621M across Seed through Series D from investors including
+  Allianz X, SVB Capital, Greycroft, Aspect Ventures, and Elefund. CEO and
+  co-founder is John Swigart. The Pie Partner API is the public developer
+  surface; there is no broader open-source SDK or GitHub organization.
+type: Index
+position: Provider
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Insurance
+  - Insurtech
+  - Workers Compensation
+  - Small Business
+  - Commercial Insurance
+  - Business Owners Policy
+  - Commercial Auto
+  - General Liability
+  - Professional Liability
+  - Agency Portal
+  - Partner API
+  - Quoting
+  - Binding
+url: https://raw.githubusercontent.com/api-evangelist/pie-insurance/refs/heads/main/apis.yml
+created: '2026-05-25'
+modified: '2026-05-25'
+specificationVersion: '0.20'
+apis:
+  - aid: pie-insurance:pie-insurance-partner-api
+    name: Pie Insurance Partner API
+    description: >-
+      REST/JSON Partner API (OpenAPI 3.0.4) that lets independent agencies and
+      partner platforms quote and bind Pie workers' compensation insurance
+      without leaving their own experience. Endpoints cover class-code search,
+      eligibility questions, appetite (single-class and full-state catalog),
+      price indications, full bindable quotes with create/get/update, quote
+      document upload, and quote PDF retrieval. Base URL
+      https://api.post-prod.pieinsurance.com/api/v1. Credentials are issued by
+      Pie partner onboarding; Swagger UI is published at
+      api.post-prod.pieinsurance.com/api/docs.
+    humanURL: https://www.pieinsurance.com/agency/api
+    baseURL: https://api.post-prod.pieinsurance.com/api/v1
+    tags:
+      - Insurance
+      - Workers Compensation
+      - Quoting
+      - Binding
+      - Appetite
+      - Class Codes
+      - Eligibility
+      - Partner API
+    properties:
+      - url: https://www.pieinsurance.com/agency/api
+        type: Documentation
+      - url: https://api.post-prod.pieinsurance.com/api/docs/index.html
+        type: Documentation
+      - url: https://api.post-prod.pieinsurance.com/api/docs/v1/swagger.json
+        type: Swagger
+      - url: openapi/pie-insurance-partner-api-openapi.yml
+        type: OpenAPI
+common:
+  - type: Website
+    url: https://www.pieinsurance.com
+  - type: Portal
+    url: https://www.pieinsurance.com/agency
+  - type: Documentation
+    url: https://www.pieinsurance.com/agency/api
+  - type: SignUp
+    url: https://www.pieinsurance.com/agency/partner-with-pie
+  - type: Login
+    url: https://partner.pieinsurance.com/
+  - type: Documentation
+    url: https://www.pieinsurance.com/agency/appetite-checker
+    name: Appetite Checker
+  - type: Documentation
+    url: https://www.pieinsurance.com/agency/resources
+    name: Agency Resources
+  - type: About
+    url: https://www.pieinsurance.com/about
+  - type: Timeline
+    url: https://www.pieinsurance.com/about/timeline
+  - type: Leadership
+    url: https://www.pieinsurance.com/about/leadership
+  - type: Press
+    url: https://www.pieinsurance.com/media
+  - type: Blog
+    url: https://www.pieinsurance.com/blog
+  - type: Careers
+    url: https://www.pieinsurance.com/culture/careers
+  - type: Contact
+    url: https://www.pieinsurance.com/contact
+  - type: TermsOfService
+    url: https://www.pieinsurance.com/legal/terms-of-use
+  - type: PrivacyPolicy
+    url: https://www.pieinsurance.com/legal/privacy-policy
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/pieinsurance
+  - type: Twitter
+    url: https://twitter.com/pieinsurance
+  - type: Facebook
+    url: https://www.facebook.com/pieinsurance
+  - type: Products
+    url: https://www.pieinsurance.com/coverage/workers-compensation-insurance
+    name: Workers' Compensation
+  - type: Products
+    url: https://www.pieinsurance.com/coverage/business-owners-policy
+    name: Business Owners Policy
+  - type: Products
+    url: https://www.pieinsurance.com/coverage/commercial-auto-insurance
+    name: Commercial Auto
+  - type: Products
+    url: https://www.pieinsurance.com/coverage/general-liability-insurance
+    name: General Liability
+  - type: Products
+    url: https://www.pieinsurance.com/coverage/professional-liability-insurance
+    name: Professional Liability
+  - type: Features
+    data:
+      - Workers' compensation insurance for small business across 39 states + DC
+      - In-house carrier — The Pie Insurance Company (NAIC 21857), A- (Excellent) AM Best
+      - Direct-to-business and 4,000+ partner agencies
+      - Average quote time roughly three minutes; up to 30% savings vs. comparable carriers
+      - 73% of submissions auto-decided; 70% of NCCI class codes in appetite
+      - REST/JSON Partner API documented with OpenAPI 3.0.4 (Swagger UI hosted)
+      - Class-code search and state-by-state appetite endpoints
+      - Eligibility questions endpoint keyed off agency state + class code
+      - Price indication endpoint for fast, non-binding pricing
+      - Full quote lifecycle (create, retrieve, update) with bindable output
+      - Quote document upload and quote PDF retrieval endpoints
+      - Built-in support for prior-carrier history, experience modification, and officer exclusions
+      - Business owners policy, commercial auto, general liability, professional liability, and E&O via partner carriers
+    sources:
+      - https://www.pieinsurance.com
+      - https://www.pieinsurance.com/agency/api
+      - https://www.pieinsurance.com/about
+      - https://www.pieinsurance.com/about/timeline
+      - https://api.post-prod.pieinsurance.com/api/docs/v1/swagger.json
+    updated: '2026-05-25'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
