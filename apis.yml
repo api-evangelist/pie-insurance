@@ -86,7 +86,7 @@ common:
     url: https://www.pieinsurance.com/agency
   - type: Documentation
     url: https://www.pieinsurance.com/agency/api
-  - type: SignUp
+  - type: Signup
     url: https://www.pieinsurance.com/agency/partner-with-pie
   - type: Login
     url: https://partner.pieinsurance.com/
