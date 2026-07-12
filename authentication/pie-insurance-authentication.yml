@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/pie-insurance-partner-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearer
+  type: http
+  scheme: Bearer
+  description: JWT Authorization header using the Bearer scheme. Enter token
+  sources:
+  - openapi/pie-insurance-partner-api-openapi.yml
