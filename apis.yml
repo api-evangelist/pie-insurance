@@ -80,6 +80,8 @@ apis:
       - url: openapi/pie-insurance-partner-api-openapi.yml
         type: OpenAPI
 common:
+  - type: AgenticAccess
+    url: agentic-access/pie-insurance-agentic-access.yml
   - type: DomainSecurity
     url: security/pie-insurance-domain-security.yml
   - type: Authentication
