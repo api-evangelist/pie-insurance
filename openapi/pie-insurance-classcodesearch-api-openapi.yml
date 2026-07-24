@@ -1,0 +1,212 @@
+openapi: 3.0.4
+info:
+  title: Pie Insurance Quote Api Appetite ClassCodeSearch API
+  version: v1
+servers:
+- url: https://api.post-prod.pieinsurance.com/api/v1
+security:
+- bearer: []
+tags:
+- name: ClassCodeSearch
+paths:
+  /ClassCodeSearch:
+    post:
+      tags:
+      - ClassCodeSearch
+      summary: ''
+      requestBody:
+        description: ClassCodeSearchRequest
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ClassCodeSearchRequest'
+            example:
+              state: CO
+              searchTerm: janitor
+              businessName: Subway
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClassCodeSearchRequest'
+            example:
+              state: CO
+              searchTerm: janitor
+              businessName: Subway
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ClassCodeSearchRequest'
+            example:
+              state: CO
+              searchTerm: janitor
+              businessName: Subway
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ClassCodeSearchRequest'
+            example:
+              state: CO
+              searchTerm: janitor
+              businessName: Subway
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ClassCodeSearchRequest'
+            example: "<ClassCodeSearchRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n  <State>CO</State>\n  <SearchTerm>janitor</SearchTerm>\n  <BusinessName>Subway</BusinessName>\n</ClassCodeSearchRequest>"
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ClassCodeSearchRequest'
+            example: "<ClassCodeSearchRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n  <State>CO</State>\n  <SearchTerm>janitor</SearchTerm>\n  <BusinessName>Subway</BusinessName>\n</ClassCodeSearchRequest>"
+          application/*+xml:
+            schema:
+              $ref: '#/components/schemas/ClassCodeSearchRequest'
+            example: "<ClassCodeSearchRequest xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n  <State>CO</State>\n  <SearchTerm>janitor</SearchTerm>\n  <BusinessName>Subway</BusinessName>\n</ClassCodeSearchRequest>"
+      responses:
+        '500':
+          description: Internal error, would like be legitimate error that we should fix
+        '501':
+          description: Not Implemented
+        '502':
+          description: Bad Gateway - usually a startup/load balance issue
+        '503':
+          description: Service unavailable - usually a startup/deploy issue
+        '504':
+          description: Gateway timeout - usually a startup/load balance issue
+        '505':
+          description: HTTP Version Not Supported
+        '200':
+          description: Ok - List of matches
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClassCodeMatch'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClassCodeMatch'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClassCodeMatch'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClassCodeMatch'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClassCodeMatch'
+        '400':
+          description: Bad request - usually malformed message or header
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ClassCodeSearchBadRequest'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassCodeSearchBadRequest'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ClassCodeSearchBadRequest'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ClassCodeSearchBadRequest'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ClassCodeSearchBadRequest'
+        '404':
+          description: Could not find any matches.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '415':
+          description: Unsupported Media Type
+      security:
+      - bearer: []
+components:
+  schemas:
+    ClassCodeSearchRequest:
+      required:
+      - state
+      type: object
+      properties:
+        state:
+          type: string
+          description: State must be abbreviated. ie. CO
+        searchTerm:
+          type: string
+          description: Search term must be at least two characters.
+          nullable: true
+        businessName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ClassCodeMatch:
+      type: object
+      properties:
+        value:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        matches:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+        extensions:
+          type: object
+          additionalProperties:
+            nullable: true
+          nullable: true
+      additionalProperties: false
+    ClassCodeSearchBadRequest:
+      type: object
+      properties:
+        validationErrors:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    bearer:
+      type: http
+      description: JWT Authorization header using the Bearer scheme. Enter token
+      scheme: Bearer

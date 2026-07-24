@@ -1,0 +1,800 @@
+openapi: 3.0.4
+info:
+  title: Pie Insurance Quote Api Appetite Eligibility API
+  version: v1
+servers:
+- url: https://api.post-prod.pieinsurance.com/api/v1
+security:
+- bearer: []
+tags:
+- name: Eligibility
+paths:
+  /Eligibility/questions:
+    post:
+      tags:
+      - Eligibility
+      summary: Returns agency's states class code latest eligibility questions
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClassCodeQuestionsRequest'
+            example:
+              stateClassCodes:
+              - CO:
+                - '9083'
+                - '0005'
+      responses:
+        '500':
+          description: Internal error, would like be legitimate error that we should fix
+        '501':
+          description: Not Implemented
+        '502':
+          description: Bad Gateway - usually a startup/load balance issue
+        '503':
+          description: Service unavailable - usually a startup/deploy issue
+        '504':
+          description: Gateway timeout - usually a startup/load balance issue
+        '505':
+          description: HTTP Version Not Supported
+        '200':
+          description: Returns State Code Questions array
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassCodeQuestionsResponse'
+              example:
+                questionsByStateAndClassCodes:
+                  CO:
+                    '8810':
+                    - id: 00000000-0000-0000-0000-000000000000
+                      type: boolean
+                      questionContent: Do employees work from home under normal circumstances
+                      answersWithDeclineIndication:
+                        'Yes':
+                          subQuestionsId:
+                          - 00000000-0000-0000-0000-000000000000
+                        'No':
+                          decisionStatus: Quotable
+                    - id: 00000000-0000-0000-0000-000000000000
+                      type: range
+                      questionUnit: percent
+                      questionContent: What percentage of employees work from home under normal circumstances?
+                      isSubQuestion: true
+                      answersWithDeclineIndication:
+                        0-50:
+                          decisionStatus: Quotable
+                        50-90:
+                          decisionStatus: Refer
+                        90-max:
+                          decisionStatus: Decline
+                    - id: 00000000-0000-0000-0000-000000000000
+                      type: text
+                      questionContent: What safety devices do the insured's employees use when lifting?
+                      answersWithDeclineIndication:
+                        text:
+                          decisionStatus: Quotable
+                  DC:
+                    '9010':
+                    - id: 00000000-0000-0000-0000-000000000000
+                      type: boolean
+                      questionContent: Do employees work from home under normal circumstances
+                      answersWithDeclineIndication:
+                        'Yes':
+                          subQuestionsId:
+                          - 00000000-0000-0000-0000-000000000000
+                        'No':
+                          decisionStatus: Quotable
+                    - id: 00000000-0000-0000-0000-000000000000
+                      type: range
+                      questionUnit: percent
+                      questionContent: What percentage of employees work from home under normal circumstances?
+                      isSubQuestion: true
+                      answersWithDeclineIndication:
+                        0-50:
+                          decisionStatus: Quotable
+                        50-90:
+                          decisionStatus: Refer
+                        90-max:
+                          decisionStatus: Decline
+                    - id: 00000000-0000-0000-0000-000000000000
+                      type: text
+                      questionContent: What safety devices do the insured's employees use when lifting?
+                      answersWithDeclineIndication:
+                        text:
+                          decisionStatus: Quotable
+                  CA:
+                    '7219':
+                    - id: 00000000-0000-0000-0000-000000000000
+                      type: boolean
+                      questionContent: Do employees work from home under normal circumstances
+                      answersWithDeclineIndication:
+                        'Yes':
+                          subQuestionsId:
+                          - 00000000-0000-0000-0000-000000000000
+                        'No':
+                          decisionStatus: Quotable
+                    - id: 00000000-0000-0000-0000-000000000000
+                      type: range
+                      questionUnit: percent
+                      questionContent: What percentage of employees work from home under normal circumstances?
+                      isSubQuestion: true
+                      answersWithDeclineIndication:
+                        0-50:
+                          decisionStatus: Quotable
+                        50-90:
+                          decisionStatus: Refer
+                        90-max:
+                          decisionStatus: Decline
+                    - id: 00000000-0000-0000-0000-000000000000
+                      type: text
+                      questionContent: What safety devices do the insured's employees use when lifting?
+                      answersWithDeclineIndication:
+                        text:
+                          decisionStatus: Quotable
+        '400':
+          description: Bad request - usually malformed message or header
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+      security:
+      - bearer: []
+components:
+  schemas:
+    Question:
+      required:
+      - answersWithDeclineIndication
+      - id
+      - isSubQuestion
+      - questionContent
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+        questionUnit:
+          type: string
+          nullable: true
+        questionContent:
+          type: string
+        isSubQuestion:
+          type: boolean
+        answersWithDeclineIndication:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/AnswerDecision'
+      additionalProperties: false
+    ClassCodeQuestionsRequest:
+      required:
+      - stateClassCodes
+      type: object
+      properties:
+        stateClassCodes:
+          type: array
+          items:
+            type: object
+            properties:
+              AL:
+                type: array
+                items:
+                  type: string
+              AK:
+                type: array
+                items:
+                  type: string
+              AR:
+                type: array
+                items:
+                  type: string
+              AZ:
+                type: array
+                items:
+                  type: string
+              CA:
+                type: array
+                items:
+                  type: string
+              CO:
+                type: array
+                items:
+                  type: string
+              CT:
+                type: array
+                items:
+                  type: string
+              DC:
+                type: array
+                items:
+                  type: string
+              DE:
+                type: array
+                items:
+                  type: string
+              FL:
+                type: array
+                items:
+                  type: string
+              GA:
+                type: array
+                items:
+                  type: string
+              HI:
+                type: array
+                items:
+                  type: string
+              IA:
+                type: array
+                items:
+                  type: string
+              ID:
+                type: array
+                items:
+                  type: string
+              IL:
+                type: array
+                items:
+                  type: string
+              IN:
+                type: array
+                items:
+                  type: string
+              KS:
+                type: array
+                items:
+                  type: string
+              KY:
+                type: array
+                items:
+                  type: string
+              LA:
+                type: array
+                items:
+                  type: string
+              MA:
+                type: array
+                items:
+                  type: string
+              MD:
+                type: array
+                items:
+                  type: string
+              ME:
+                type: array
+                items:
+                  type: string
+              MI:
+                type: array
+                items:
+                  type: string
+              MN:
+                type: array
+                items:
+                  type: string
+              MO:
+                type: array
+                items:
+                  type: string
+              MS:
+                type: array
+                items:
+                  type: string
+              MT:
+                type: array
+                items:
+                  type: string
+              NC:
+                type: array
+                items:
+                  type: string
+              ND:
+                type: array
+                items:
+                  type: string
+              NE:
+                type: array
+                items:
+                  type: string
+              NH:
+                type: array
+                items:
+                  type: string
+              NJ:
+                type: array
+                items:
+                  type: string
+              NM:
+                type: array
+                items:
+                  type: string
+              NV:
+                type: array
+                items:
+                  type: string
+              NY:
+                type: array
+                items:
+                  type: string
+              OK:
+                type: array
+                items:
+                  type: string
+              OH:
+                type: array
+                items:
+                  type: string
+              OR:
+                type: array
+                items:
+                  type: string
+              PA:
+                type: array
+                items:
+                  type: string
+              RI:
+                type: array
+                items:
+                  type: string
+              SC:
+                type: array
+                items:
+                  type: string
+              SD:
+                type: array
+                items:
+                  type: string
+              TN:
+                type: array
+                items:
+                  type: string
+              TX:
+                type: array
+                items:
+                  type: string
+              UT:
+                type: array
+                items:
+                  type: string
+              VA:
+                type: array
+                items:
+                  type: string
+              VT:
+                type: array
+                items:
+                  type: string
+              WA:
+                type: array
+                items:
+                  type: string
+              WI:
+                type: array
+                items:
+                  type: string
+              WV:
+                type: array
+                items:
+                  type: string
+              WY:
+                type: array
+                items:
+                  type: string
+              CW:
+                type: array
+                items:
+                  type: string
+            additionalProperties: false
+      additionalProperties: false
+      description: Class Codes Questions Request for States
+    DecisionStatus:
+      enum:
+      - Undetermined
+      - Refer
+      - Decline
+      - Quotable
+      type: string
+    ClassCodeQuestionsResponse:
+      required:
+      - questionsByStateAndClassCodes
+      type: object
+      properties:
+        questionsByStateAndClassCodes:
+          type: object
+          properties:
+            AL:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            AK:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            AR:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            AZ:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            CA:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            CO:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            CT:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            DC:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            DE:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            FL:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            GA:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            HI:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            IA:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            ID:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            IL:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            IN:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            KS:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            KY:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            LA:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            MA:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            MD:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            ME:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            MI:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            MN:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            MO:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            MS:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            MT:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            NC:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            ND:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            NE:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            NH:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            NJ:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            NM:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            NV:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            NY:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            OK:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            OH:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            OR:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            PA:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            RI:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            SC:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            SD:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            TN:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            TX:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            UT:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            VA:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            VT:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            WA:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            WI:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            WV:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            WY:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+            CW:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+          additionalProperties: false
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+        extensions:
+          type: object
+          additionalProperties:
+            nullable: true
+          nullable: true
+      additionalProperties: false
+    ValidationProblemDetails:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+        extensions:
+          type: object
+          additionalProperties:
+            nullable: true
+          nullable: true
+      additionalProperties: false
+    AnswerDecision:
+      required:
+      - decisionStatus
+      type: object
+      properties:
+        decisionStatus:
+          $ref: '#/components/schemas/DecisionStatus'
+        subQuestionsId:
+          type: array
+          items:
+            type: string
+            format: uuid
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    bearer:
+      type: http
+      description: JWT Authorization header using the Bearer scheme. Enter token
+      scheme: Bearer

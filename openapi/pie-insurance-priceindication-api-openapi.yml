@@ -1,0 +1,903 @@
+openapi: 3.0.4
+info:
+  title: Pie Insurance Quote Api Appetite PriceIndication API
+  version: v1
+servers:
+- url: https://api.post-prod.pieinsurance.com/api/v1
+security:
+- bearer: []
+tags:
+- name: PriceIndication
+paths:
+  /PriceIndication/{id}:
+    get:
+      tags:
+      - PriceIndication
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '500':
+          description: Internal Server Error
+        '501':
+          description: Not Implemented
+        '502':
+          description: Bad Gateway
+        '503':
+          description: Service Unavailable
+        '504':
+          description: Gateway Timeout
+        '505':
+          description: HTTP Version Not Supported
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteResponse'
+              example:
+                referReasons:
+                - no ReferReasons
+                declineReasons:
+                - no DeclineReasons
+                namedInsured: MSF Hotdog LTD
+                insuredAddress:
+                  line1: 40 W Littleton Blvd Ste 211
+                  city: Beverly Hills
+                  state: CA
+                  zip: '90210'
+                agencyId: 08deba69-602c-b83e-a82b-ef00017ebf3c
+                effectiveDate: '2026-05-30'
+                employersLiabilityLimits:
+                  eachAccident: 1000000
+                  eachEmployee: 1000000
+                  eachPolicy: 1000000
+                quoteDate: '2026-05-25'
+                insuranceCompany: Insurance Company
+                classCodeQuotes:
+                - classCode: '2759'
+                  description: BOX OR BOX SHOOK MFG
+                  payroll: 300000
+                  premium: 0
+                  rate: 0.0
+                  percentageOfPayroll: 0.0
+                stateQuotes:
+                - experienceModifierInput: 0.0
+                  scheduleModifierFactor: 0.0
+                  catastrophe: 30.0
+                  classPremium: 30930.0
+                  expenseConstant: 0.0
+                  minimumPremium: 0
+                  modifiedPremium: 0
+                  policyTotalEstimatedCost: 29588.0
+                  premiumDiscount: 200
+                  scheduleModifier: 0.0
+                  standardPremium: 0
+                  subjectPremium: 0
+                  totalTaxesAndAssessments: 0.0
+                  terrorism: 90.0
+                  totalEstimatedPremium: 29292.0
+                premiumDetails:
+                  catastrophe: 13.0
+                  classPremium: 1787.0
+                  expenseConstant: 160.0
+                  experienceModifier: 0.0
+                  liabilityLimits: 120
+                  minimumPremium: 1805
+                  modifiedPremium: 2264
+                  policyTotalEstimatedCost: 2081.0
+                  premiumDiscount: 0
+                  scheduleModifier: -453.0
+                  standardPremium: 1811
+                  subjectPremium: 2264
+                  taxesAndAssessments:
+                  - code: CAWCARF
+                    description: Workers' Compensation Administration Revolving Fund
+                    rate: 0.01704
+                    premium: 34
+                  totalTaxesAndAssessments: 70.0
+                  terrorism: 27.0
+                  totalEstimatedPremium: 2011.0
+                  blanketWaiver: 0
+                  specificWaiver: 0
+                  territoryModifier: 357
+                installments:
+                  full:
+                    '2026-05-30':
+                      premiumAmount: 2011
+                      surchargeAmount: 70
+                      totalAmount: 2081
+                  monthly:
+                    '2026-05-30':
+                      premiumAmount: 2011
+                      surchargeAmount: 70
+                      totalAmount: 2081
+                  quarterly:
+                    '2026-05-30':
+                      premiumAmount: 2011
+                      surchargeAmount: 70
+                      totalAmount: 2081
+                  semiannual:
+                    '2026-05-30':
+                      premiumAmount: 2011
+                      surchargeAmount: 70
+                      totalAmount: 2081
+                isDirty: false
+                instantBindStatus: Unspecified
+                bindStatus: Quotable
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+      security:
+      - bearer: []
+  /PriceIndication:
+    post:
+      tags:
+      - PriceIndication
+      parameters:
+      - name: agencyCode
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PriceIndicationRequest'
+            example:
+              state: CA
+              zip: '90210'
+              classCodes:
+              - classCode: '5403'
+                payroll: 20000
+              partnerAgentEmail: partner@agent.com
+              contactEmail: contact@customer.com
+              currentlyCovered: true
+              claimCountYear1: 0
+              claimCountYear2: 0
+              claimCountYear3: 1
+              effectiveDate: '2026-05-27'
+              emod: 1.0
+              blanketWaiver: false
+      responses:
+        '500':
+          description: Internal Server Error
+        '501':
+          description: Not Implemented
+        '502':
+          description: Bad Gateway
+        '503':
+          description: Service Unavailable
+        '504':
+          description: Gateway Timeout
+        '505':
+          description: HTTP Version Not Supported
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteDeclineResponse'
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteResponse'
+              example:
+                referReasons:
+                - no ReferReasons
+                declineReasons:
+                - no DeclineReasons
+                namedInsured: MSF Hotdog LTD
+                insuredAddress:
+                  line1: 40 W Littleton Blvd Ste 211
+                  city: Beverly Hills
+                  state: CA
+                  zip: '90210'
+                agencyId: 08deba69-602e-0778-a82b-ef00017ebf3e
+                effectiveDate: '2026-05-30'
+                employersLiabilityLimits:
+                  eachAccident: 1000000
+                  eachEmployee: 1000000
+                  eachPolicy: 1000000
+                quoteDate: '2026-05-25'
+                insuranceCompany: Insurance Company
+                classCodeQuotes:
+                - classCode: '2759'
+                  description: BOX OR BOX SHOOK MFG
+                  payroll: 300000
+                  premium: 0
+                  rate: 0.0
+                  percentageOfPayroll: 0.0
+                stateQuotes:
+                - experienceModifierInput: 0.0
+                  scheduleModifierFactor: 0.0
+                  catastrophe: 30.0
+                  classPremium: 30930.0
+                  expenseConstant: 0.0
+                  minimumPremium: 0
+                  modifiedPremium: 0
+                  policyTotalEstimatedCost: 29588.0
+                  premiumDiscount: 200
+                  scheduleModifier: 0.0
+                  standardPremium: 0
+                  subjectPremium: 0
+                  totalTaxesAndAssessments: 0.0
+                  terrorism: 90.0
+                  totalEstimatedPremium: 29292.0
+                premiumDetails:
+                  catastrophe: 13.0
+                  classPremium: 1787.0
+                  expenseConstant: 160.0
+                  experienceModifier: 0.0
+                  liabilityLimits: 120
+                  minimumPremium: 1805
+                  modifiedPremium: 2264
+                  policyTotalEstimatedCost: 2081.0
+                  premiumDiscount: 0
+                  scheduleModifier: -453.0
+                  standardPremium: 1811
+                  subjectPremium: 2264
+                  taxesAndAssessments:
+                  - code: CAWCARF
+                    description: Workers' Compensation Administration Revolving Fund
+                    rate: 0.01704
+                    premium: 34
+                  totalTaxesAndAssessments: 70.0
+                  terrorism: 27.0
+                  totalEstimatedPremium: 2011.0
+                  blanketWaiver: 0
+                  specificWaiver: 0
+                  territoryModifier: 357
+                installments:
+                  full:
+                    '2026-05-30':
+                      premiumAmount: 2011
+                      surchargeAmount: 70
+                      totalAmount: 2081
+                  monthly:
+                    '2026-05-30':
+                      premiumAmount: 2011
+                      surchargeAmount: 70
+                      totalAmount: 2081
+                  quarterly:
+                    '2026-05-30':
+                      premiumAmount: 2011
+                      surchargeAmount: 70
+                      totalAmount: 2081
+                  semiannual:
+                    '2026-05-30':
+                      premiumAmount: 2011
+                      surchargeAmount: 70
+                      totalAmount: 2081
+                isDirty: false
+                instantBindStatus: Unspecified
+                bindStatus: Quotable
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationProblemDetails'
+      security:
+      - bearer: []
+components:
+  schemas:
+    TaxDetails:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        rate:
+          type: number
+          format: double
+        premium:
+          type: integer
+          format: int32
+      additionalProperties: false
+    InstantBindStatus:
+      enum:
+      - Unspecified
+      - Ineligible
+      - Eligible
+      - Pending
+      - Failed
+      - Succeeded
+      type: string
+    ClassCodeQuote:
+      required:
+      - classCode
+      - description
+      - payroll
+      - percentageOfPayroll
+      - premium
+      - rate
+      - state
+      type: object
+      properties:
+        classCode:
+          type: string
+        description:
+          type: string
+        payroll:
+          type: integer
+          format: int32
+        state:
+          type: string
+        premium:
+          type: integer
+          format: int32
+        rate:
+          type: number
+          format: double
+        percentageOfPayroll:
+          type: number
+          format: double
+      additionalProperties: false
+    BusinessAddress:
+      type: object
+      properties:
+        line1:
+          type: string
+          nullable: true
+        line2:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        zip:
+          type: string
+          nullable: true
+        county:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        latitude:
+          type: number
+          format: double
+          nullable: true
+        longitude:
+          type: number
+          format: double
+          nullable: true
+      additionalProperties: false
+    BindStatus:
+      enum:
+      - Refer
+      - Decline
+      - Quotable
+      - Undetermined
+      type: string
+    PremiumDetails:
+      required:
+      - catastrophe
+      - classPremium
+      - expenseConstant
+      - experienceModifier
+      - minimumPremium
+      - modifiedPremium
+      - policyTotalEstimatedCost
+      - premiumDiscount
+      - scheduleModifier
+      - standardPremium
+      - subjectPremium
+      - taxesAndAssessments
+      - territoryModifier
+      - terrorism
+      - totalEstimatedPremium
+      - totalTaxesAndAssessments
+      type: object
+      properties:
+        catastrophe:
+          type: number
+          format: double
+        classPremium:
+          type: number
+          format: double
+        expenseConstant:
+          type: number
+          format: double
+        experienceModifier:
+          type: number
+          format: double
+        liabilityLimits:
+          type: integer
+          format: int32
+          nullable: true
+        minimumPremium:
+          type: integer
+          format: int32
+        modifiedPremium:
+          type: integer
+          format: int32
+        policyTotalEstimatedCost:
+          type: number
+          format: double
+        premiumDiscount:
+          type: integer
+          format: int32
+        scheduleModifier:
+          type: number
+          format: double
+        standardPremium:
+          type: integer
+          format: int32
+        subjectPremium:
+          type: integer
+          format: int32
+        taxesAndAssessments:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxDetails'
+        totalTaxesAndAssessments:
+          type: number
+          format: double
+        terrorism:
+          type: number
+          format: double
+        totalEstimatedPremium:
+          type: number
+          format: double
+        blanketWaiver:
+          type: integer
+          format: int32
+          nullable: true
+        specificWaiver:
+          type: integer
+          format: int32
+          nullable: true
+        territoryModifier:
+          type: integer
+          format: int32
+      additionalProperties: false
+    EmployersLiabilityLimits:
+      type: object
+      properties:
+        eachAccident:
+          type: integer
+          format: int32
+          nullable: true
+        eachEmployee:
+          type: integer
+          format: int32
+          nullable: true
+        eachPolicy:
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+    QuoteResponse:
+      required:
+      - agencyId
+      - classCodeQuotes
+      - effectiveDate
+      - employersLiabilityLimits
+      - installments
+      - insuranceCompany
+      - insuredAddress
+      - namedInsured
+      - premiumDetails
+      - quoteDate
+      - stateQuotes
+      type: object
+      properties:
+        referReasons:
+          type: array
+          items:
+            type: string
+          nullable: true
+        declineReasons:
+          type: array
+          items:
+            type: string
+          nullable: true
+        namedInsured:
+          type: string
+        insuredAddress:
+          $ref: '#/components/schemas/BusinessAddress'
+        agencyId:
+          type: string
+          format: uuid
+        effectiveDate:
+          type: string
+        employersLiabilityLimits:
+          $ref: '#/components/schemas/EmployersLiabilityLimits'
+        quoteDate:
+          type: string
+        insuranceCompany:
+          type: string
+        classCodeQuotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassCodeQuote'
+        stateQuotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/StateQuote'
+        primaryStateQuotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/StateQuote'
+          nullable: true
+        premiumDetails:
+          $ref: '#/components/schemas/PremiumDetails'
+        installments:
+          type: object
+          properties:
+            full:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/Payment'
+            semiannual:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/Payment'
+            quarterly:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/Payment'
+            monthly:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/Payment'
+          additionalProperties: false
+        isDirty:
+          type: boolean
+        warningMessage:
+          type: string
+          nullable: true
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+          nullable: true
+        instantBindStatus:
+          $ref: '#/components/schemas/InstantBindStatus'
+        bindStatus:
+          $ref: '#/components/schemas/BindStatus'
+      additionalProperties: false
+    Exposure:
+      type: object
+      properties:
+        classCode:
+          type: string
+          description: State defined class code
+          nullable: true
+        payroll:
+          type: integer
+          description: Payroll amount of the class code.
+          format: int32
+      additionalProperties: false
+    ValidationProblemDetails:
+      type: object
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+        extensions:
+          type: object
+          additionalProperties:
+            nullable: true
+          nullable: true
+      additionalProperties: false
+    NotCoveredReason:
+      enum:
+      - NonPayment
+      - AuditNonCompliance
+      - NoEmployees
+      - Other
+      - NewBusiness
+      type: string
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+        extensions:
+          type: object
+          additionalProperties:
+            nullable: true
+          nullable: true
+      additionalProperties: false
+    Contact:
+      required:
+      - email
+      - firstName
+      - lastName
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+          nullable: true
+        email:
+          type: string
+        agentEnteredEmail:
+          type: string
+          nullable: true
+      additionalProperties: false
+    PriceIndicationRequest:
+      required:
+      - classCodes
+      - currentlyCovered
+      - state
+      - zip
+      type: object
+      properties:
+        state:
+          type: string
+          description: 'Use 2 digit state code:
+
+            [ AL, AK, AR, AZ, CA, CO, CT, DC, DE, FL, GA, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MI, MN, MO, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OK, OH, OR, PA, RI, SC, SD, TN, TX, UT, VA, VT, WA, WI, WV, WY, CW ]'
+        zip:
+          type: string
+          description: Five Digit zip code.
+        classCodes:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/Exposure'
+          description: List of class codes.
+        partnerAgentEmail:
+          type: string
+          description: Agent Email
+          nullable: true
+        contactEmail:
+          type: string
+          description: Insured email
+          nullable: true
+        currentlyCovered:
+          type: boolean
+          description: Are you currently covered by Worker's Compensation Policy if false then supply a reason
+        notCurrentlyCoveredReason:
+          $ref: '#/components/schemas/NotCoveredReason'
+        notCurrentlyCoveredDescription:
+          type: string
+          description: Provide description when notCurrentlyCoveredReason is ‘Other’ or when there is additional lapse information available.
+          nullable: true
+        claimCountYear1:
+          type: integer
+          description: Number of claims with your current carrier and term.
+          format: int32
+          nullable: true
+        claimCountYear2:
+          type: integer
+          description: Number of claims with your previous 1 year term.
+          format: int32
+          nullable: true
+        claimCountYear3:
+          type: integer
+          description: Number of claims with your previous 1 year term from 2 years ago.
+          format: int32
+          nullable: true
+        effectiveDate:
+          type: string
+          description: " Format YYYY-MM-DD\nMust be between tomorrow's date and 120 from current date\n (today + 120 days >= effectiveDate >= tomorrow)"
+          nullable: true
+        emod:
+          type: number
+          description: Experience Modificator Factor
+          format: double
+          nullable: true
+        blanketWaiver:
+          type: boolean
+          description: Boolean to apply a blanket Waiver
+          nullable: true
+      additionalProperties: false
+    QuoteDeclineResponse:
+      type: object
+      properties:
+        declineReasons:
+          type: array
+          items:
+            type: string
+          nullable: true
+        bindStatus:
+          $ref: '#/components/schemas/BindStatus'
+      additionalProperties: false
+    Payment:
+      type: object
+      properties:
+        premiumAmount:
+          type: integer
+          format: int32
+        surchargeAmount:
+          type: integer
+          format: int32
+          nullable: true
+        feeAmount:
+          type: integer
+          format: int32
+          nullable: true
+        totalAmount:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+    StateQuote:
+      required:
+      - catastrophe
+      - classPremium
+      - expenseConstant
+      - experienceModifier
+      - experienceModifierInput
+      - minimumPremium
+      - modifiedPremium
+      - policyTotalEstimatedCost
+      - premiumDiscount
+      - scheduleModifier
+      - scheduleModifierFactor
+      - standardPremium
+      - state
+      - subjectPremium
+      - taxesAndAssessments
+      - territoryModifier
+      - terrorism
+      - totalEstimatedPremium
+      - totalTaxesAndAssessments
+      type: object
+      properties:
+        catastropheRate:
+          type: number
+          format: double
+          nullable: true
+        deductible:
+          type: integer
+          format: int32
+          nullable: true
+        experienceModifierInput:
+          type: number
+          format: double
+        scheduleModifierFactor:
+          type: number
+          format: double
+        state:
+          type: string
+        terrorismRiskInsuranceAct:
+          type: number
+          format: double
+          nullable: true
+        premiumDiscountRate:
+          type: number
+          format: double
+          nullable: true
+        territoryModifierFactor:
+          type: number
+          format: double
+          nullable: true
+        balanceToMinimumPremium:
+          type: integer
+          format: int32
+          nullable: true
+        dividendFactor:
+          type: number
+          format: double
+          nullable: true
+        catastrophe:
+          type: number
+          format: double
+        classPremium:
+          type: number
+          format: double
+        expenseConstant:
+          type: number
+          format: double
+        experienceModifier:
+          type: number
+          format: double
+        liabilityLimits:
+          type: integer
+          format: int32
+          nullable: true
+        minimumPremium:
+          type: integer
+          format: int32
+        modifiedPremium:
+          type: integer
+          format: int32
+        policyTotalEstimatedCost:
+          type: number
+          format: double
+        premiumDiscount:
+          type: integer
+          format: int32
+        scheduleModifier:
+          type: number
+          format: double
+        standardPremium:
+          type: integer
+          format: int32
+        subjectPremium:
+          type: integer
+          format: int32
+        taxesAndAssessments:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxDetails'
+        totalTaxesAndAssessments:
+          type: number
+          format: double
+        terrorism:
+          type: number
+          format: double
+        totalEstimatedPremium:
+          type: number
+          format: double
+        blanketWaiver:
+          type: integer
+          format: int32
+          nullable: true
+        specificWaiver:
+          type: integer
+          format: int32
+          nullable: true
+        territoryModifier:
+          type: integer
+          format: int32
+      additionalProperties: false
+  securitySchemes:
+    bearer:
+      type: http
+      description: JWT Authorization header using the Bearer scheme. Enter token
+      scheme: Bearer

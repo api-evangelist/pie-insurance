@@ -1,0 +1,294 @@
+openapi: 3.0.4
+info:
+  title: Pie Insurance Quote Api Appetite API
+  version: v1
+servers:
+- url: https://api.post-prod.pieinsurance.com/api/v1
+security:
+- bearer: []
+tags:
+- name: Appetite
+paths:
+  /Appetite:
+    post:
+      tags:
+      - Appetite
+      summary: ''
+      requestBody:
+        description: AppetiteRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppetiteRequest'
+            example:
+              appetiteFor:
+              - zip: ''
+                state: CO
+                class: '0005'
+              - zip: '80238'
+                state: ''
+                class: '0005'
+              - zip: '80238'
+                state: ''
+                class: '5555'
+      responses:
+        '500':
+          description: Internal error, would like be legitimate error that we should fix
+        '501':
+          description: Not Implemented
+        '502':
+          description: Bad Gateway - usually a startup/load balance issue
+        '503':
+          description: Service unavailable - usually a startup/deploy issue
+        '504':
+          description: Gateway timeout - usually a startup/load balance issue
+        '505':
+          description: HTTP Version Not Supported
+        '200':
+          description: Ok - List of matches
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClassCodeMatch'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClassCodeMatch'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClassCodeMatch'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClassCodeMatch'
+            text/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClassCodeMatch'
+        '400':
+          description: Bad request - usually malformed message or header
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ClassCodeSearchBadRequest'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassCodeSearchBadRequest'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ClassCodeSearchBadRequest'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ClassCodeSearchBadRequest'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ClassCodeSearchBadRequest'
+        '404':
+          description: Could not find any matches.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '415':
+          description: Unsupported Media Type
+      security:
+      - bearer: []
+    get:
+      tags:
+      - Appetite
+      summary: Returns an array of supported class codes by state
+      parameters:
+      - name: code
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '500':
+          description: Internal error, would like be legitimate error that we should fix
+        '501':
+          description: Not Implemented
+        '502':
+          description: Bad Gateway - usually a startup/load balance issue
+        '503':
+          description: Service unavailable - usually a startup/deploy issue
+        '504':
+          description: Gateway timeout - usually a startup/load balance issue
+        '505':
+          description: HTTP Version Not Supported
+        '200':
+          description: Returns StateAppetiteResponse object
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StateAppetiteResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateAppetiteResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StateAppetiteResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StateAppetiteResponse'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/StateAppetiteResponse'
+        '400':
+          description: Bad request - usually malformed message or header
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StateAppetiteRequest'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateAppetiteRequest'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StateAppetiteRequest'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StateAppetiteRequest'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/StateAppetiteRequest'
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+      security:
+      - bearer: []
+components:
+  schemas:
+    AppetiteRequest:
+      required:
+      - appetiteFor
+      type: object
+      properties:
+        appetiteFor:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/RegionAndClassPost'
+      additionalProperties: false
+    ClassCodeSearchBadRequest:
+      type: object
+      properties:
+        validationErrors:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    RegionAndClassPost:
+      type: object
+      properties:
+        zip:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        class:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+        extensions:
+          type: object
+          additionalProperties:
+            nullable: true
+          nullable: true
+      additionalProperties: false
+    StateAppetiteResponse:
+      required:
+      - classCodes
+      - state
+      type: object
+      properties:
+        state:
+          type: string
+        classCodes:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    ClassCodeMatch:
+      type: object
+      properties:
+        value:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        matches:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    StateAppetiteRequest:
+      required:
+      - code
+      type: object
+      properties:
+        code:
+          type: string
+      additionalProperties: false
+  securitySchemes:
+    bearer:
+      type: http
+      description: JWT Authorization header using the Bearer scheme. Enter token
+      scheme: Bearer
