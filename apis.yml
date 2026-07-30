@@ -25,9 +25,21 @@ description: >-
   co-founder is John Swigart. The Pie Partner API is the public developer
   surface; there is no broader open-source SDK or GitHub organization.
 type: Index
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Provider
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/pie-insurance.png
 tags:
   - Insurance
   - Insurtech
@@ -47,38 +59,118 @@ created: '2026-05-25'
 modified: '2026-05-25'
 specificationVersion: '0.20'
 apis:
-  - aid: pie-insurance:pie-insurance-partner-api
-    name: Pie Insurance Partner API
-    description: >-
-      REST/JSON Partner API (OpenAPI 3.0.4) that lets independent agencies and
-      partner platforms quote and bind Pie workers' compensation insurance
-      without leaving their own experience. Endpoints cover class-code search,
-      eligibility questions, appetite (single-class and full-state catalog),
-      price indications, full bindable quotes with create/get/update, quote
-      document upload, and quote PDF retrieval. Base URL
-      https://api.post-prod.pieinsurance.com/api/v1. Credentials are issued by
-      Pie partner onboarding; Swagger UI is published at
-      api.post-prod.pieinsurance.com/api/docs.
-    humanURL: https://www.pieinsurance.com/agency/api
-    baseURL: https://api.post-prod.pieinsurance.com/api/v1
-    tags:
-      - Insurance
-      - Workers Compensation
-      - Quoting
-      - Binding
-      - Appetite
-      - Class Codes
-      - Eligibility
-      - Partner API
-    properties:
-      - url: https://www.pieinsurance.com/agency/api
-        type: Documentation
-      - url: https://api.post-prod.pieinsurance.com/api/docs/index.html
-        type: Documentation
-      - url: https://api.post-prod.pieinsurance.com/api/docs/v1/swagger.json
-        type: Swagger
-      - url: openapi/pie-insurance-partner-api-openapi.yml
-        type: OpenAPI
+- aid: pie-insurance:pie-insurance-appetite-api
+  name: Pie Insurance Appetite API
+  description: The Appetite API from Pie Insurance — 1 operation(s) for appetite.
+  humanURL: https://www.pieinsurance.com/agency/api
+  baseURL: https://api.post-prod.pieinsurance.com/api/v1
+  tags:
+  - Appetite
+  properties:
+  - type: OpenAPI
+    url: openapi/pie-insurance-appetite-api-openapi.yml
+  - type: Documentation
+    url: https://www.pieinsurance.com/agency/api
+  - type: Documentation
+    url: https://api.post-prod.pieinsurance.com/api/docs/index.html
+  - type: Swagger
+    url: https://api.post-prod.pieinsurance.com/api/docs/v1/swagger.json
+- aid: pie-insurance:pie-insurance-classcodesearch-api
+  name: Pie Insurance ClassCodeSearch API
+  description: The ClassCodeSearch API from Pie Insurance — 1 operation(s) for classcodesearch.
+  humanURL: https://www.pieinsurance.com/agency/api
+  baseURL: https://api.post-prod.pieinsurance.com/api/v1
+  tags:
+  - ClassCodeSearch
+  properties:
+  - type: OpenAPI
+    url: openapi/pie-insurance-classcodesearch-api-openapi.yml
+  - type: Documentation
+    url: https://www.pieinsurance.com/agency/api
+  - type: Documentation
+    url: https://api.post-prod.pieinsurance.com/api/docs/index.html
+  - type: Swagger
+    url: https://api.post-prod.pieinsurance.com/api/docs/v1/swagger.json
+- aid: pie-insurance:pie-insurance-eligibility-api
+  name: Pie Insurance Eligibility API
+  description: The Eligibility API from Pie Insurance — 1 operation(s) for eligibility.
+  humanURL: https://www.pieinsurance.com/agency/api
+  baseURL: https://api.post-prod.pieinsurance.com/api/v1
+  tags:
+  - Eligibility
+  properties:
+  - type: OpenAPI
+    url: openapi/pie-insurance-eligibility-api-openapi.yml
+  - type: Documentation
+    url: https://www.pieinsurance.com/agency/api
+  - type: Documentation
+    url: https://api.post-prod.pieinsurance.com/api/docs/index.html
+  - type: Swagger
+    url: https://api.post-prod.pieinsurance.com/api/docs/v1/swagger.json
+- aid: pie-insurance:pie-insurance-priceindication-api
+  name: Pie Insurance PriceIndication API
+  description: The PriceIndication API from Pie Insurance — 2 operation(s) for priceindication.
+  humanURL: https://www.pieinsurance.com/agency/api
+  baseURL: https://api.post-prod.pieinsurance.com/api/v1
+  tags:
+  - PriceIndication
+  properties:
+  - type: OpenAPI
+    url: openapi/pie-insurance-priceindication-api-openapi.yml
+  - type: Documentation
+    url: https://www.pieinsurance.com/agency/api
+  - type: Documentation
+    url: https://api.post-prod.pieinsurance.com/api/docs/index.html
+  - type: Swagger
+    url: https://api.post-prod.pieinsurance.com/api/docs/v1/swagger.json
+- aid: pie-insurance:pie-insurance-quotedocument-api
+  name: Pie Insurance QuoteDocument API
+  description: The QuoteDocument API from Pie Insurance — 1 operation(s) for quotedocument.
+  humanURL: https://www.pieinsurance.com/agency/api
+  baseURL: https://api.post-prod.pieinsurance.com/api/v1
+  tags:
+  - QuoteDocument
+  properties:
+  - type: OpenAPI
+    url: openapi/pie-insurance-quotedocument-api-openapi.yml
+  - type: Documentation
+    url: https://www.pieinsurance.com/agency/api
+  - type: Documentation
+    url: https://api.post-prod.pieinsurance.com/api/docs/index.html
+  - type: Swagger
+    url: https://api.post-prod.pieinsurance.com/api/docs/v1/swagger.json
+- aid: pie-insurance:pie-insurance-quotepdf-api
+  name: Pie Insurance QuotePdf API
+  description: The QuotePdf API from Pie Insurance — 1 operation(s) for quotepdf.
+  humanURL: https://www.pieinsurance.com/agency/api
+  baseURL: https://api.post-prod.pieinsurance.com/api/v1
+  tags:
+  - QuotePdf
+  properties:
+  - type: OpenAPI
+    url: openapi/pie-insurance-quotepdf-api-openapi.yml
+  - type: Documentation
+    url: https://www.pieinsurance.com/agency/api
+  - type: Documentation
+    url: https://api.post-prod.pieinsurance.com/api/docs/index.html
+  - type: Swagger
+    url: https://api.post-prod.pieinsurance.com/api/docs/v1/swagger.json
+- aid: pie-insurance:pie-insurance-quotes-api
+  name: Pie Insurance Quotes API
+  description: The Quotes API from Pie Insurance — 2 operation(s) for quotes.
+  humanURL: https://www.pieinsurance.com/agency/api
+  baseURL: https://api.post-prod.pieinsurance.com/api/v1
+  tags:
+  - Quotes
+  properties:
+  - type: OpenAPI
+    url: openapi/pie-insurance-quotes-api-openapi.yml
+  - type: Documentation
+    url: https://www.pieinsurance.com/agency/api
+  - type: Documentation
+    url: https://api.post-prod.pieinsurance.com/api/docs/index.html
+  - type: Swagger
+    url: https://api.post-prod.pieinsurance.com/api/docs/v1/swagger.json
 common:
   - type: AgenticAccess
     url: agentic-access/pie-insurance-agentic-access.yml
