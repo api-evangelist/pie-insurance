@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pie Insurance Quote Api Appetite QuotePdf API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "QuotePdf",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /QuotePdf/{quoteId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.post-prod.pieinsurance.com/api/v1/QuotePdf/:quoteId",
+            "params": [
+              {
+                "name": "quoteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

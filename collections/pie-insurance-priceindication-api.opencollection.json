@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pie Insurance Quote Api Appetite PriceIndication API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PriceIndication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /PriceIndication/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.post-prod.pieinsurance.com/api/v1/PriceIndication/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /PriceIndication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.post-prod.pieinsurance.com/api/v1/PriceIndication",
+            "params": [
+              {
+                "name": "agencyCode",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

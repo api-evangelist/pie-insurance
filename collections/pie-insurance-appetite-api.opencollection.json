@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pie Insurance Quote Api Appetite API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appetite",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns an array of supported class codes by state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.post-prod.pieinsurance.com/api/v1/Appetite",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns an array of supported class codes by state"
+        },
+        {
+          "info": {
+            "name": "POST /Appetite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.post-prod.pieinsurance.com/api/v1/Appetite",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

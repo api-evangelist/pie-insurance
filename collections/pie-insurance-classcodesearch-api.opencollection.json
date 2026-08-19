@@ -1,0 +1,32 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pie Insurance Quote Api Appetite ClassCodeSearch API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ClassCodeSearch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /ClassCodeSearch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.post-prod.pieinsurance.com/api/v1/ClassCodeSearch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,539 @@
+{
+  "item": [
+    {
+      "id": "e8cfb8c6-2124-43be-b1c1-424c6d90b224",
+      "name": "Eligibility",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d73fb989-e6d4-47bf-a2ad-06328995d3ee",
+          "name": "Returns agency's states class code latest eligibility questions",
+          "request": {
+            "name": "Returns agency's states class code latest eligibility questions",
+            "description": {},
+            "url": {
+              "path": [
+                "Eligibility",
+                "questions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stateClassCodes\": [\n    {\n      \"AL\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"AK\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"AR\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"AZ\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"CA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"CO\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"CT\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"DC\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"DE\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"FL\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"GA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"HI\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"IA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ID\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"IL\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"IN\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"KS\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"KY\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"LA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MD\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ME\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MI\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MN\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MO\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MS\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MT\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NC\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ND\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NE\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NH\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NJ\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NM\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NV\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NY\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"OK\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"OH\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"OR\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"PA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"RI\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"SC\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"SD\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"TN\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"TX\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"UT\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"VA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"VT\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"WA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"WI\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"WV\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"WY\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"CW\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"AL\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"AK\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"AR\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"AZ\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"CA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"CO\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"CT\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"DC\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"DE\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"FL\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"GA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"HI\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"IA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ID\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"IL\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"IN\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"KS\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"KY\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"LA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MD\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ME\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MI\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MN\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MO\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MS\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"MT\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NC\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"ND\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NE\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NH\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NJ\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NM\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NV\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"NY\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"OK\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"OH\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"OR\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"PA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"RI\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"SC\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"SD\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"TN\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"TX\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"UT\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"VA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"VT\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"WA\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"WI\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"WV\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"WY\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"CW\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "98c54f61-b963-4e3f-9824-facbd977a2f3",
+              "name": "Returns State Code Questions array",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Eligibility",
+                    "questions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stateClassCodes\": [\n    {\n      \"CO\": [\n        \"9083\",\n        \"0005\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"questionsByStateAndClassCodes\": {\n    \"CO\": {\n      \"8810\": [\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"type\": \"boolean\",\n          \"questionContent\": \"Do employees work from home under normal circumstances\",\n          \"answersWithDeclineIndication\": {\n            \"Yes\": {\n              \"subQuestionsId\": [\n                \"00000000-0000-0000-0000-000000000000\"\n              ]\n            },\n            \"No\": {\n              \"decisionStatus\": \"Quotable\"\n            }\n          }\n        },\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"type\": \"range\",\n          \"questionUnit\": \"percent\",\n          \"questionContent\": \"What percentage of employees work from home under normal circumstances?\",\n          \"isSubQuestion\": true,\n          \"answersWithDeclineIndication\": {\n            \"0-50\": {\n              \"decisionStatus\": \"Quotable\"\n            },\n            \"50-90\": {\n              \"decisionStatus\": \"Refer\"\n            },\n            \"90-max\": {\n              \"decisionStatus\": \"Decline\"\n            }\n          }\n        },\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"type\": \"text\",\n          \"questionContent\": \"What safety devices do the insured's employees use when lifting?\",\n          \"answersWithDeclineIndication\": {\n            \"text\": {\n              \"decisionStatus\": \"Quotable\"\n            }\n          }\n        }\n      ]\n    },\n    \"DC\": {\n      \"9010\": [\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"type\": \"boolean\",\n          \"questionContent\": \"Do employees work from home under normal circumstances\",\n          \"answersWithDeclineIndication\": {\n            \"Yes\": {\n              \"subQuestionsId\": [\n                \"00000000-0000-0000-0000-000000000000\"\n              ]\n            },\n            \"No\": {\n              \"decisionStatus\": \"Quotable\"\n            }\n          }\n        },\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"type\": \"range\",\n          \"questionUnit\": \"percent\",\n          \"questionContent\": \"What percentage of employees work from home under normal circumstances?\",\n          \"isSubQuestion\": true,\n          \"answersWithDeclineIndication\": {\n            \"0-50\": {\n              \"decisionStatus\": \"Quotable\"\n            },\n            \"50-90\": {\n              \"decisionStatus\": \"Refer\"\n            },\n            \"90-max\": {\n              \"decisionStatus\": \"Decline\"\n            }\n          }\n        },\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"type\": \"text\",\n          \"questionContent\": \"What safety devices do the insured's employees use when lifting?\",\n          \"answersWithDeclineIndication\": {\n            \"text\": {\n              \"decisionStatus\": \"Quotable\"\n            }\n          }\n        }\n      ]\n    },\n    \"CA\": {\n      \"7219\": [\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"type\": \"boolean\",\n          \"questionContent\": \"Do employees work from home under normal circumstances\",\n          \"answersWithDeclineIndication\": {\n            \"Yes\": {\n              \"subQuestionsId\": [\n                \"00000000-0000-0000-0000-000000000000\"\n              ]\n            },\n            \"No\": {\n              \"decisionStatus\": \"Quotable\"\n            }\n          }\n        },\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"type\": \"range\",\n          \"questionUnit\": \"percent\",\n          \"questionContent\": \"What percentage of employees work from home under normal circumstances?\",\n          \"isSubQuestion\": true,\n          \"answersWithDeclineIndication\": {\n            \"0-50\": {\n              \"decisionStatus\": \"Quotable\"\n            },\n            \"50-90\": {\n              \"decisionStatus\": \"Refer\"\n            },\n            \"90-max\": {\n              \"decisionStatus\": \"Decline\"\n            }\n          }\n        },\n        {\n          \"id\": \"00000000-0000-0000-0000-000000000000\",\n          \"type\": \"text\",\n          \"questionContent\": \"What safety devices do the insured's employees use when lifting?\",\n          \"answersWithDeclineIndication\": {\n            \"text\": {\n              \"decisionStatus\": \"Quotable\"\n            }\n          }\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77d567b0-ce78-4802-bb40-1087bd1c72b3",
+              "name": "Bad request - usually malformed message or header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Eligibility",
+                    "questions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stateClassCodes\": [\n    {\n      \"CO\": [\n        \"9083\",\n        \"0005\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 8,\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"extensions\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c32ae71-d9ad-475d-b696-2d0e1e81668c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Eligibility",
+                    "questions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stateClassCodes\": [\n    {\n      \"CO\": [\n        \"9083\",\n        \"0005\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 1815,\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"extensions\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e53eecc7-86bc-4817-93e2-b81fe874e0ec",
+              "name": "Internal error, would like be legitimate error that we should fix",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Eligibility",
+                    "questions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stateClassCodes\": [\n    {\n      \"CO\": [\n        \"9083\",\n        \"0005\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c634f66-e6a4-4188-b43b-3e634b92add5",
+              "name": "Not Implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Eligibility",
+                    "questions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stateClassCodes\": [\n    {\n      \"CO\": [\n        \"9083\",\n        \"0005\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "66ebf4bf-9fa5-47c5-99cb-917f126c62c2",
+              "name": "Bad Gateway - usually a startup/load balance issue",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Eligibility",
+                    "questions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stateClassCodes\": [\n    {\n      \"CO\": [\n        \"9083\",\n        \"0005\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb5ba38a-71a2-40c6-a0e3-8289e501e58e",
+              "name": "Service unavailable - usually a startup/deploy issue",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Eligibility",
+                    "questions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stateClassCodes\": [\n    {\n      \"CO\": [\n        \"9083\",\n        \"0005\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17394e39-d8eb-4d8e-89fe-49ce674070bd",
+              "name": "Gateway timeout - usually a startup/load balance issue",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Eligibility",
+                    "questions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stateClassCodes\": [\n    {\n      \"CO\": [\n        \"9083\",\n        \"0005\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4aee4e1c-696b-4ba3-9d42-96a4dae1a9aa",
+              "name": "HTTP Version Not Supported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Eligibility",
+                    "questions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stateClassCodes\": [\n    {\n      \"CO\": [\n        \"9083\",\n        \"0005\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "HTTP Version Not Supported",
+              "code": 505,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.post-prod.pieinsurance.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "27e7e53c-7a81-4370-a4da-8ed6bf3de21e",
+    "name": "Pie Insurance Quote Api Appetite Eligibility API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

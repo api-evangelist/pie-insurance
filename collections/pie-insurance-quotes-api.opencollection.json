@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pie Insurance Quote Api Appetite Quotes API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /Quotes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.post-prod.pieinsurance.com/api/v1/Quotes",
+            "params": [
+              {
+                "name": "agencyCode",
+                "value": "",
+                "type": "query",
+                "description": "An optional query param to submit an Agency Code in addition to the IdToken"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "GET /Quotes/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.post-prod.pieinsurance.com/api/v1/Quotes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /Quotes/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.post-prod.pieinsurance.com/api/v1/Quotes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "agencyCode",
+                "value": "",
+                "type": "query",
+                "description": "An optional query param to submit an AgencyCode in addition to the IdToken"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pie Insurance Quote Api Appetite Eligibility API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Eligibility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns agency's states class code latest eligibility questions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.post-prod.pieinsurance.com/api/v1/Eligibility/questions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns agency's states class code latest eligibility questions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

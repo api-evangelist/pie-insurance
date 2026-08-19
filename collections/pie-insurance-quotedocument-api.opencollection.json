@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pie Insurance Quote Api Appetite QuoteDocument API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "QuoteDocument",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /QuoteDocument/{quoteId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.post-prod.pieinsurance.com/api/v1/QuoteDocument/:quoteId",
+            "params": [
+              {
+                "name": "quoteId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "files",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

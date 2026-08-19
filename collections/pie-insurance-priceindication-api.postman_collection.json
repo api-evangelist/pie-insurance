@@ -1,0 +1,1077 @@
+{
+  "item": [
+    {
+      "id": "7a87d33e-2b62-4636-9ee8-bbe999612771",
+      "name": "PriceIndication",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c5463a97-aef8-4181-b640-ecbcefbcc8dd",
+          "name": "/PriceIndication/:id",
+          "request": {
+            "name": "/PriceIndication/:id",
+            "description": {},
+            "url": {
+              "path": [
+                "PriceIndication",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "18895716-1e99-4326-8f1c-ce7d94a5afb3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referReasons\": [\n    \"no ReferReasons\"\n  ],\n  \"declineReasons\": [\n    \"no DeclineReasons\"\n  ],\n  \"namedInsured\": \"MSF Hotdog LTD\",\n  \"insuredAddress\": {\n    \"line1\": \"40 W Littleton Blvd Ste 211\",\n    \"city\": \"Beverly Hills\",\n    \"state\": \"CA\",\n    \"zip\": \"90210\"\n  },\n  \"agencyId\": \"08deba69-602c-b83e-a82b-ef00017ebf3c\",\n  \"effectiveDate\": \"2026-05-30\",\n  \"employersLiabilityLimits\": {\n    \"eachAccident\": 1000000,\n    \"eachEmployee\": 1000000,\n    \"eachPolicy\": 1000000\n  },\n  \"quoteDate\": \"2026-05-25\",\n  \"insuranceCompany\": \"Insurance Company\",\n  \"classCodeQuotes\": [\n    {\n      \"classCode\": \"2759\",\n      \"description\": \"BOX OR BOX SHOOK MFG\",\n      \"payroll\": 300000,\n      \"premium\": 0,\n      \"rate\": 0,\n      \"percentageOfPayroll\": 0\n    }\n  ],\n  \"stateQuotes\": [\n    {\n      \"experienceModifierInput\": 0,\n      \"scheduleModifierFactor\": 0,\n      \"catastrophe\": 30,\n      \"classPremium\": 30930,\n      \"expenseConstant\": 0,\n      \"minimumPremium\": 0,\n      \"modifiedPremium\": 0,\n      \"policyTotalEstimatedCost\": 29588,\n      \"premiumDiscount\": 200,\n      \"scheduleModifier\": 0,\n      \"standardPremium\": 0,\n      \"subjectPremium\": 0,\n      \"totalTaxesAndAssessments\": 0,\n      \"terrorism\": 90,\n      \"totalEstimatedPremium\": 29292\n    }\n  ],\n  \"premiumDetails\": {\n    \"catastrophe\": 13,\n    \"classPremium\": 1787,\n    \"expenseConstant\": 160,\n    \"experienceModifier\": 0,\n    \"liabilityLimits\": 120,\n    \"minimumPremium\": 1805,\n    \"modifiedPremium\": 2264,\n    \"policyTotalEstimatedCost\": 2081,\n    \"premiumDiscount\": 0,\n    \"scheduleModifier\": -453,\n    \"standardPremium\": 1811,\n    \"subjectPremium\": 2264,\n    \"taxesAndAssessments\": [\n      {\n        \"code\": \"CAWCARF\",\n        \"description\": \"Workers' Compensation Administration Revolving Fund\",\n        \"rate\": 0.01704,\n        \"premium\": 34\n      }\n    ],\n    \"totalTaxesAndAssessments\": 70,\n    \"terrorism\": 27,\n    \"totalEstimatedPremium\": 2011,\n    \"blanketWaiver\": 0,\n    \"specificWaiver\": 0,\n    \"territoryModifier\": 357\n  },\n  \"installments\": {\n    \"full\": {\n      \"2026-05-30\": {\n        \"premiumAmount\": 2011,\n        \"surchargeAmount\": 70,\n        \"totalAmount\": 2081\n      }\n    },\n    \"monthly\": {\n      \"2026-05-30\": {\n        \"premiumAmount\": 2011,\n        \"surchargeAmount\": 70,\n        \"totalAmount\": 2081\n      }\n    },\n    \"quarterly\": {\n      \"2026-05-30\": {\n        \"premiumAmount\": 2011,\n        \"surchargeAmount\": 70,\n        \"totalAmount\": 2081\n      }\n    },\n    \"semiannual\": {\n      \"2026-05-30\": {\n        \"premiumAmount\": 2011,\n        \"surchargeAmount\": 70,\n        \"totalAmount\": 2081\n      }\n    }\n  },\n  \"isDirty\": false,\n  \"instantBindStatus\": \"Unspecified\",\n  \"bindStatus\": \"Quotable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c070f16e-1a83-4865-9c40-39f3ff417a70",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 3430,\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"extensions\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c1751e6-7f6b-419e-b174-58a504e6e557",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f4f0947-8848-4397-ac89-31bbd67b7b37",
+              "name": "Not Implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f313ffe-5710-4f96-99eb-9b21919cd89f",
+              "name": "Bad Gateway",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f4bf11f2-f62d-4734-b959-df5d1d0d618f",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f7e26e54-3d95-4cd7-bf12-e0730b74c9dd",
+              "name": "Gateway Timeout",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "996dea86-d091-4bd2-a1d7-1062ef26ba74",
+              "name": "HTTP Version Not Supported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "HTTP Version Not Supported",
+              "code": 505,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3aa495e-dfb0-4b60-be79-c66daa72b23f",
+          "name": "/PriceIndication",
+          "request": {
+            "name": "/PriceIndication",
+            "description": {},
+            "url": {
+              "path": [
+                "PriceIndication"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "agencyCode",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"classCodes\": [\n    {\n      \"classCode\": \"<string>\",\n      \"payroll\": \"<integer>\"\n    }\n  ],\n  \"currentlyCovered\": \"<boolean>\",\n  \"state\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"partnerAgentEmail\": \"<string>\",\n  \"contactEmail\": \"<string>\",\n  \"notCurrentlyCoveredReason\": \"<string>\",\n  \"notCurrentlyCoveredDescription\": \"<string>\",\n  \"claimCountYear1\": \"<integer>\",\n  \"claimCountYear2\": \"<integer>\",\n  \"claimCountYear3\": \"<integer>\",\n  \"effectiveDate\": \"<string>\",\n  \"emod\": \"<double>\",\n  \"blanketWaiver\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b8521544-e628-4d34-ba67-b0bf3fe55051",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agencyCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"CA\",\n  \"zip\": \"90210\",\n  \"classCodes\": [\n    {\n      \"classCode\": \"5403\",\n      \"payroll\": 20000\n    }\n  ],\n  \"partnerAgentEmail\": \"partner@agent.com\",\n  \"contactEmail\": \"contact@customer.com\",\n  \"currentlyCovered\": true,\n  \"claimCountYear1\": 0,\n  \"claimCountYear2\": 0,\n  \"claimCountYear3\": 1,\n  \"effectiveDate\": \"2026-05-27\",\n  \"emod\": 1,\n  \"blanketWaiver\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"declineReasons\": [\n    \"string\",\n    \"string\"\n  ],\n  \"bindStatus\": \"Refer\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69d42ad7-cdba-4610-bacc-7323a2e7129c",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agencyCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"CA\",\n  \"zip\": \"90210\",\n  \"classCodes\": [\n    {\n      \"classCode\": \"5403\",\n      \"payroll\": 20000\n    }\n  ],\n  \"partnerAgentEmail\": \"partner@agent.com\",\n  \"contactEmail\": \"contact@customer.com\",\n  \"currentlyCovered\": true,\n  \"claimCountYear1\": 0,\n  \"claimCountYear2\": 0,\n  \"claimCountYear3\": 1,\n  \"effectiveDate\": \"2026-05-27\",\n  \"emod\": 1,\n  \"blanketWaiver\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referReasons\": [\n    \"no ReferReasons\"\n  ],\n  \"declineReasons\": [\n    \"no DeclineReasons\"\n  ],\n  \"namedInsured\": \"MSF Hotdog LTD\",\n  \"insuredAddress\": {\n    \"line1\": \"40 W Littleton Blvd Ste 211\",\n    \"city\": \"Beverly Hills\",\n    \"state\": \"CA\",\n    \"zip\": \"90210\"\n  },\n  \"agencyId\": \"08deba69-602e-0778-a82b-ef00017ebf3e\",\n  \"effectiveDate\": \"2026-05-30\",\n  \"employersLiabilityLimits\": {\n    \"eachAccident\": 1000000,\n    \"eachEmployee\": 1000000,\n    \"eachPolicy\": 1000000\n  },\n  \"quoteDate\": \"2026-05-25\",\n  \"insuranceCompany\": \"Insurance Company\",\n  \"classCodeQuotes\": [\n    {\n      \"classCode\": \"2759\",\n      \"description\": \"BOX OR BOX SHOOK MFG\",\n      \"payroll\": 300000,\n      \"premium\": 0,\n      \"rate\": 0,\n      \"percentageOfPayroll\": 0\n    }\n  ],\n  \"stateQuotes\": [\n    {\n      \"experienceModifierInput\": 0,\n      \"scheduleModifierFactor\": 0,\n      \"catastrophe\": 30,\n      \"classPremium\": 30930,\n      \"expenseConstant\": 0,\n      \"minimumPremium\": 0,\n      \"modifiedPremium\": 0,\n      \"policyTotalEstimatedCost\": 29588,\n      \"premiumDiscount\": 200,\n      \"scheduleModifier\": 0,\n      \"standardPremium\": 0,\n      \"subjectPremium\": 0,\n      \"totalTaxesAndAssessments\": 0,\n      \"terrorism\": 90,\n      \"totalEstimatedPremium\": 29292\n    }\n  ],\n  \"premiumDetails\": {\n    \"catastrophe\": 13,\n    \"classPremium\": 1787,\n    \"expenseConstant\": 160,\n    \"experienceModifier\": 0,\n    \"liabilityLimits\": 120,\n    \"minimumPremium\": 1805,\n    \"modifiedPremium\": 2264,\n    \"policyTotalEstimatedCost\": 2081,\n    \"premiumDiscount\": 0,\n    \"scheduleModifier\": -453,\n    \"standardPremium\": 1811,\n    \"subjectPremium\": 2264,\n    \"taxesAndAssessments\": [\n      {\n        \"code\": \"CAWCARF\",\n        \"description\": \"Workers' Compensation Administration Revolving Fund\",\n        \"rate\": 0.01704,\n        \"premium\": 34\n      }\n    ],\n    \"totalTaxesAndAssessments\": 70,\n    \"terrorism\": 27,\n    \"totalEstimatedPremium\": 2011,\n    \"blanketWaiver\": 0,\n    \"specificWaiver\": 0,\n    \"territoryModifier\": 357\n  },\n  \"installments\": {\n    \"full\": {\n      \"2026-05-30\": {\n        \"premiumAmount\": 2011,\n        \"surchargeAmount\": 70,\n        \"totalAmount\": 2081\n      }\n    },\n    \"monthly\": {\n      \"2026-05-30\": {\n        \"premiumAmount\": 2011,\n        \"surchargeAmount\": 70,\n        \"totalAmount\": 2081\n      }\n    },\n    \"quarterly\": {\n      \"2026-05-30\": {\n        \"premiumAmount\": 2011,\n        \"surchargeAmount\": 70,\n        \"totalAmount\": 2081\n      }\n    },\n    \"semiannual\": {\n      \"2026-05-30\": {\n        \"premiumAmount\": 2011,\n        \"surchargeAmount\": 70,\n        \"totalAmount\": 2081\n      }\n    }\n  },\n  \"isDirty\": false,\n  \"instantBindStatus\": \"Unspecified\",\n  \"bindStatus\": \"Quotable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "722fdcd9-06c6-46a9-a357-38d2f2dce32a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agencyCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"CA\",\n  \"zip\": \"90210\",\n  \"classCodes\": [\n    {\n      \"classCode\": \"5403\",\n      \"payroll\": 20000\n    }\n  ],\n  \"partnerAgentEmail\": \"partner@agent.com\",\n  \"contactEmail\": \"contact@customer.com\",\n  \"currentlyCovered\": true,\n  \"claimCountYear1\": 0,\n  \"claimCountYear2\": 0,\n  \"claimCountYear3\": 1,\n  \"effectiveDate\": \"2026-05-27\",\n  \"emod\": 1,\n  \"blanketWaiver\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 2821,\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"extensions\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fedfd5d-086a-481c-b557-ccd312db60c4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agencyCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"CA\",\n  \"zip\": \"90210\",\n  \"classCodes\": [\n    {\n      \"classCode\": \"5403\",\n      \"payroll\": 20000\n    }\n  ],\n  \"partnerAgentEmail\": \"partner@agent.com\",\n  \"contactEmail\": \"contact@customer.com\",\n  \"currentlyCovered\": true,\n  \"claimCountYear1\": 0,\n  \"claimCountYear2\": 0,\n  \"claimCountYear3\": 1,\n  \"effectiveDate\": \"2026-05-27\",\n  \"emod\": 1,\n  \"blanketWaiver\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 6312,\n  \"detail\": \"string\",\n  \"instance\": \"string\",\n  \"extensions\": {\n    \"key_0\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0320980-5fb1-4e1e-bd5a-9626947af440",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agencyCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"CA\",\n  \"zip\": \"90210\",\n  \"classCodes\": [\n    {\n      \"classCode\": \"5403\",\n      \"payroll\": 20000\n    }\n  ],\n  \"partnerAgentEmail\": \"partner@agent.com\",\n  \"contactEmail\": \"contact@customer.com\",\n  \"currentlyCovered\": true,\n  \"claimCountYear1\": 0,\n  \"claimCountYear2\": 0,\n  \"claimCountYear3\": 1,\n  \"effectiveDate\": \"2026-05-27\",\n  \"emod\": 1,\n  \"blanketWaiver\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "80f1ef25-030e-4077-a9bb-4251154d0bd6",
+              "name": "Not Implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agencyCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"CA\",\n  \"zip\": \"90210\",\n  \"classCodes\": [\n    {\n      \"classCode\": \"5403\",\n      \"payroll\": 20000\n    }\n  ],\n  \"partnerAgentEmail\": \"partner@agent.com\",\n  \"contactEmail\": \"contact@customer.com\",\n  \"currentlyCovered\": true,\n  \"claimCountYear1\": 0,\n  \"claimCountYear2\": 0,\n  \"claimCountYear3\": 1,\n  \"effectiveDate\": \"2026-05-27\",\n  \"emod\": 1,\n  \"blanketWaiver\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d5cd8f4f-d59e-4f2c-a5d6-96fc9325dce6",
+              "name": "Bad Gateway",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agencyCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"CA\",\n  \"zip\": \"90210\",\n  \"classCodes\": [\n    {\n      \"classCode\": \"5403\",\n      \"payroll\": 20000\n    }\n  ],\n  \"partnerAgentEmail\": \"partner@agent.com\",\n  \"contactEmail\": \"contact@customer.com\",\n  \"currentlyCovered\": true,\n  \"claimCountYear1\": 0,\n  \"claimCountYear2\": 0,\n  \"claimCountYear3\": 1,\n  \"effectiveDate\": \"2026-05-27\",\n  \"emod\": 1,\n  \"blanketWaiver\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3aa5b579-9a15-4355-84ae-da9695978424",
+              "name": "Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agencyCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"CA\",\n  \"zip\": \"90210\",\n  \"classCodes\": [\n    {\n      \"classCode\": \"5403\",\n      \"payroll\": 20000\n    }\n  ],\n  \"partnerAgentEmail\": \"partner@agent.com\",\n  \"contactEmail\": \"contact@customer.com\",\n  \"currentlyCovered\": true,\n  \"claimCountYear1\": 0,\n  \"claimCountYear2\": 0,\n  \"claimCountYear3\": 1,\n  \"effectiveDate\": \"2026-05-27\",\n  \"emod\": 1,\n  \"blanketWaiver\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e9f4c3a2-2128-4ec2-86dc-5d43cfe8a9ac",
+              "name": "Gateway Timeout",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agencyCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"CA\",\n  \"zip\": \"90210\",\n  \"classCodes\": [\n    {\n      \"classCode\": \"5403\",\n      \"payroll\": 20000\n    }\n  ],\n  \"partnerAgentEmail\": \"partner@agent.com\",\n  \"contactEmail\": \"contact@customer.com\",\n  \"currentlyCovered\": true,\n  \"claimCountYear1\": 0,\n  \"claimCountYear2\": 0,\n  \"claimCountYear3\": 1,\n  \"effectiveDate\": \"2026-05-27\",\n  \"emod\": 1,\n  \"blanketWaiver\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a37f2b58-9cd1-4a18-8a30-fc78df73ad64",
+              "name": "HTTP Version Not Supported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PriceIndication"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "agencyCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"CA\",\n  \"zip\": \"90210\",\n  \"classCodes\": [\n    {\n      \"classCode\": \"5403\",\n      \"payroll\": 20000\n    }\n  ],\n  \"partnerAgentEmail\": \"partner@agent.com\",\n  \"contactEmail\": \"contact@customer.com\",\n  \"currentlyCovered\": true,\n  \"claimCountYear1\": 0,\n  \"claimCountYear2\": 0,\n  \"claimCountYear3\": 1,\n  \"effectiveDate\": \"2026-05-27\",\n  \"emod\": 1,\n  \"blanketWaiver\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "HTTP Version Not Supported",
+              "code": 505,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.post-prod.pieinsurance.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5f213b43-abe8-45f1-8f97-4b5c236b98a5",
+    "name": "Pie Insurance Quote Api Appetite PriceIndication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
