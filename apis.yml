@@ -53,6 +53,20 @@ tags:
   - Agency Portal
   - Partner API
   - Quoting
+  - Bindings
+tags_raw:
+  - Insurance
+  - Insurtech
+  - Workers Compensation
+  - Small Business
+  - Commercial Insurance
+  - Business Owners Policy
+  - Commercial Auto
+  - General Liability
+  - Professional Liability
+  - Agency Portal
+  - Partner API
+  - Quoting
   - Binding
 url: https://raw.githubusercontent.com/api-evangelist/pie-insurance/refs/heads/main/apis.yml
 created: '2026-05-25'
