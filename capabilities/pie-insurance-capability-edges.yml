@@ -1,0 +1,58 @@
+slug: pie-insurance
+provider: Pie Insurance
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Insurance
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Quotes
+  spec_file: pie-insurance-quotes-api-openapi.yml
+  capability_id: BC-2110.60
+  capability_id_l1: BC-2110
+  capability_name: Quote & Submission Management
+  confidence: 0.82
+  evidence: POST /Quotes, GET /Quotes/{id}, PUT /Quotes/{id}; schemas WorkCompPolicyPost, EligibilityAnswerPost,
+    InstantBindStatus
+  reason: Creates and updates workers' compensation quotes with exposures, prior carrier, eligibility
+    answers and an instant-bind status — submission intake, quote generation and quote-to-bind conversion.
+- tag: Appetite
+  spec_file: pie-insurance-appetite-api-openapi.yml
+  capability_id: BC-2130
+  capability_id_l1: BC-2130
+  capability_name: Insurance Underwriting Management
+  confidence: 0.7
+  evidence: GET /Appetite 'Returns an array of supported class codes by state'; schemas StateAppetiteRequest,
+    StateAppetiteResponse, RegionAndClassPost
+  reason: Appetite lookup by state and workers' comp class code determines whether a risk is acceptable
+    to the carrier — insurance underwriting acceptance criteria. L2 left null because the evidence sits
+    between product-embedded eligibility rules (BC-2100.30) and underwriting intake/triage.
+- tag: Eligibility
+  spec_file: pie-insurance-eligibility-api-openapi.yml
+  capability_id: BC-2130
+  capability_id_l1: BC-2130
+  capability_name: Insurance Underwriting Management
+  confidence: 0.7
+  evidence: POST /Eligibility/questions 'Returns agency's states class code latest eligibility questions';
+    schemas ClassCodeQuestionsResponse, Question, AnswerDecision, DecisionStatus
+  reason: Serves state- and class-code-specific underwriting eligibility questions and returns answer
+    decisions — underwriting risk qualification. L2 withheld because it straddles risk-data intake (BC-2130.10)
+    and accept/decline decisioning (BC-2130.40).
+- tag: PriceIndication
+  spec_file: pie-insurance-priceindication-api-openapi.yml
+  capability_id: BC-2110.60
+  capability_id_l1: BC-2110
+  capability_name: Quote & Submission Management
+  confidence: 0.7
+  evidence: POST /PriceIndication; schemas QuoteResponse, StateQuote, PremiumDetails, QuoteDeclineResponse,
+    InstantBindStatus, BindStatus
+  reason: Generates and retrieves priced insurance quotes for agency submissions, including decline responses
+    and instant-bind status — quote generation and quote-to-bind flow. Some chance the intended home is
+    underwriting pricing (BC-2130.30), hence 0.7.

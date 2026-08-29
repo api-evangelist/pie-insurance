@@ -198,6 +198,9 @@ apis:
   - type: Swagger
     url: https://api.post-prod.pieinsurance.com/api/docs/v1/swagger.json
 common:
+  - type: CapabilityMap
+    url: capabilities/pie-insurance-capability-edges.yml
+    name: Pie Insurance Business Capability Map
   - type: AgenticAccess
     url: agentic-access/pie-insurance-agentic-access.yml
   - type: DomainSecurity
