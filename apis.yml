@@ -25,6 +25,18 @@ description: >-
   co-founder is John Swigart. The Pie Partner API is the public developer
   surface; there is no broader open-source SDK or GitHub organization.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
