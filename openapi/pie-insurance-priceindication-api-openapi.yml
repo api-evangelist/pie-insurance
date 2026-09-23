@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Pie Insurance Quote Api Appetite PriceIndication API
+  title: Pie Insurance Quote Price Indication API
   version: v1
 servers:
 - url: https://api.post-prod.pieinsurance.com/api/v1
@@ -137,6 +137,10 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
       security:
       - bearer: []
+      summary: Get price indication by id
+      x-summary-source: derived
+      operationId: getPriceIndicationById
+      x-operation-id-source: derived
   /PriceIndication:
     post:
       tags:
@@ -295,102 +299,163 @@ paths:
                 $ref: '#/components/schemas/ValidationProblemDetails'
       security:
       - bearer: []
+      summary: Create price indication
+      x-summary-source: derived
+      operationId: postPriceIndication
+      x-operation-id-source: derived
 components:
   schemas:
-    TaxDetails:
+    StateQuote:
+      required:
+      - catastrophe
+      - classPremium
+      - expenseConstant
+      - experienceModifier
+      - experienceModifierInput
+      - minimumPremium
+      - modifiedPremium
+      - policyTotalEstimatedCost
+      - premiumDiscount
+      - scheduleModifier
+      - scheduleModifierFactor
+      - standardPremium
+      - state
+      - subjectPremium
+      - taxesAndAssessments
+      - territoryModifier
+      - terrorism
+      - totalEstimatedPremium
+      - totalTaxesAndAssessments
       type: object
       properties:
-        code:
-          type: string
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        rate:
+        catastropheRate:
+          type:
+          - number
+          - 'null'
+          format: double
+        deductible:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        experienceModifierInput:
           type: number
           format: double
-        premium:
+        scheduleModifierFactor:
+          type: number
+          format: double
+        state:
+          type: string
+        terrorismRiskInsuranceAct:
+          type:
+          - number
+          - 'null'
+          format: double
+        premiumDiscountRate:
+          type:
+          - number
+          - 'null'
+          format: double
+        territoryModifierFactor:
+          type:
+          - number
+          - 'null'
+          format: double
+        balanceToMinimumPremium:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        dividendFactor:
+          type:
+          - number
+          - 'null'
+          format: double
+        catastrophe:
+          type: number
+          format: double
+        classPremium:
+          type: number
+          format: double
+        expenseConstant:
+          type: number
+          format: double
+        experienceModifier:
+          type: number
+          format: double
+        liabilityLimits:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minimumPremium:
+          type: integer
+          format: int32
+        modifiedPremium:
+          type: integer
+          format: int32
+        policyTotalEstimatedCost:
+          type: number
+          format: double
+        premiumDiscount:
+          type: integer
+          format: int32
+        scheduleModifier:
+          type: number
+          format: double
+        standardPremium:
+          type: integer
+          format: int32
+        subjectPremium:
+          type: integer
+          format: int32
+        taxesAndAssessments:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaxDetails'
+        totalTaxesAndAssessments:
+          type: number
+          format: double
+        terrorism:
+          type: number
+          format: double
+        totalEstimatedPremium:
+          type: number
+          format: double
+        blanketWaiver:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        specificWaiver:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        territoryModifier:
           type: integer
           format: int32
       additionalProperties: false
-    InstantBindStatus:
-      enum:
-      - Unspecified
-      - Ineligible
-      - Eligible
-      - Pending
-      - Failed
-      - Succeeded
-      type: string
-    ClassCodeQuote:
-      required:
-      - classCode
-      - description
-      - payroll
-      - percentageOfPayroll
-      - premium
-      - rate
-      - state
+    Exposure:
       type: object
       properties:
         classCode:
-          type: string
-        description:
-          type: string
+          type:
+          - string
+          - 'null'
+          description: State defined class code
         payroll:
           type: integer
+          description: Payroll amount of the class code.
           format: int32
-        state:
-          type: string
-        premium:
-          type: integer
-          format: int32
-        rate:
-          type: number
-          format: double
-        percentageOfPayroll:
-          type: number
-          format: double
       additionalProperties: false
-    BusinessAddress:
-      type: object
-      properties:
-        line1:
-          type: string
-          nullable: true
-        line2:
-          type: string
-          nullable: true
-        city:
-          type: string
-          nullable: true
-        state:
-          type: string
-          nullable: true
-        zip:
-          type: string
-          nullable: true
-        county:
-          type: string
-          nullable: true
-        country:
-          type: string
-          nullable: true
-        latitude:
-          type: number
-          format: double
-          nullable: true
-        longitude:
-          type: number
-          format: double
-          nullable: true
-      additionalProperties: false
-    BindStatus:
+    NotCoveredReason:
       enum:
-      - Refer
-      - Decline
-      - Quotable
-      - Undetermined
+      - NonPayment
+      - AuditNonCompliance
+      - NoEmployees
+      - Other
+      - NewBusiness
       type: string
     PremiumDetails:
       required:
@@ -425,9 +490,10 @@ components:
           type: number
           format: double
         liabilityLimits:
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
         minimumPremium:
           type: integer
           format: int32
@@ -463,32 +529,98 @@ components:
           type: number
           format: double
         blanketWaiver:
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
         specificWaiver:
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
         territoryModifier:
           type: integer
           format: int32
       additionalProperties: false
-    EmployersLiabilityLimits:
+    ValidationProblemDetails:
       type: object
       properties:
-        eachAccident:
-          type: integer
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
-        eachEmployee:
-          type: integer
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+        extensions:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
-        eachPolicy:
-          type: integer
-          format: int32
-          nullable: true
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+        extensions:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+      additionalProperties: false
+    QuoteDeclineResponse:
+      type: object
+      properties:
+        declineReasons:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        bindStatus:
+          $ref: '#/components/schemas/BindStatus'
       additionalProperties: false
     QuoteResponse:
       required:
@@ -506,15 +638,17 @@ components:
       type: object
       properties:
         referReasons:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             type: string
-          nullable: true
         declineReasons:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             type: string
-          nullable: true
         namedInsured:
           type: string
         insuredAddress:
@@ -539,10 +673,11 @@ components:
           items:
             $ref: '#/components/schemas/StateQuote'
         primaryStateQuotes:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/StateQuote'
-          nullable: true
         premiumDetails:
           $ref: '#/components/schemas/PremiumDetails'
         installments:
@@ -568,94 +703,38 @@ components:
         isDirty:
           type: boolean
         warningMessage:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         contacts:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/Contact'
-          nullable: true
         instantBindStatus:
           $ref: '#/components/schemas/InstantBindStatus'
         bindStatus:
           $ref: '#/components/schemas/BindStatus'
       additionalProperties: false
-    Exposure:
+    EmployersLiabilityLimits:
       type: object
       properties:
-        classCode:
-          type: string
-          description: State defined class code
-          nullable: true
-        payroll:
-          type: integer
-          description: Payroll amount of the class code.
+        eachAccident:
+          type:
+          - integer
+          - 'null'
           format: int32
-      additionalProperties: false
-    ValidationProblemDetails:
-      type: object
-      properties:
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-          nullable: true
-        type:
-          type: string
-          nullable: true
-        title:
-          type: string
-          nullable: true
-        status:
-          type: integer
+        eachEmployee:
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
-        detail:
-          type: string
-          nullable: true
-        instance:
-          type: string
-          nullable: true
-        extensions:
-          type: object
-          additionalProperties:
-            nullable: true
-          nullable: true
-      additionalProperties: false
-    NotCoveredReason:
-      enum:
-      - NonPayment
-      - AuditNonCompliance
-      - NoEmployees
-      - Other
-      - NewBusiness
-      type: string
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          nullable: true
-        title:
-          type: string
-          nullable: true
-        status:
-          type: integer
+        eachPolicy:
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
-        detail:
-          type: string
-          nullable: true
-        instance:
-          type: string
-          nullable: true
-        extensions:
-          type: object
-          additionalProperties:
-            nullable: true
-          nullable: true
       additionalProperties: false
     Contact:
       required:
@@ -669,13 +748,15 @@ components:
         lastName:
           type: string
         phone:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         email:
           type: string
         agentEnteredEmail:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     PriceIndicationRequest:
       required:
@@ -700,62 +781,85 @@ components:
             $ref: '#/components/schemas/Exposure'
           description: List of class codes.
         partnerAgentEmail:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Agent Email
-          nullable: true
         contactEmail:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Insured email
-          nullable: true
         currentlyCovered:
           type: boolean
           description: Are you currently covered by Worker's Compensation Policy if false then supply a reason
         notCurrentlyCoveredReason:
           $ref: '#/components/schemas/NotCoveredReason'
         notCurrentlyCoveredDescription:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Provide description when notCurrentlyCoveredReason is ‘Other’ or when there is additional lapse information available.
-          nullable: true
         claimCountYear1:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Number of claims with your current carrier and term.
           format: int32
-          nullable: true
         claimCountYear2:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Number of claims with your previous 1 year term.
           format: int32
-          nullable: true
         claimCountYear3:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Number of claims with your previous 1 year term from 2 years ago.
           format: int32
-          nullable: true
         effectiveDate:
-          type: string
+          type:
+          - string
+          - 'null'
           description: " Format YYYY-MM-DD\nMust be between tomorrow's date and 120 from current date\n (today + 120 days >= effectiveDate >= tomorrow)"
-          nullable: true
         emod:
-          type: number
+          type:
+          - number
+          - 'null'
           description: Experience Modificator Factor
           format: double
-          nullable: true
         blanketWaiver:
-          type: boolean
+          type:
+          - boolean
+          - 'null'
           description: Boolean to apply a blanket Waiver
-          nullable: true
       additionalProperties: false
-    QuoteDeclineResponse:
+    TaxDetails:
       type: object
       properties:
-        declineReasons:
-          type: array
-          items:
-            type: string
-          nullable: true
-        bindStatus:
-          $ref: '#/components/schemas/BindStatus'
+        code:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        rate:
+          type: number
+          format: double
+        premium:
+          type: integer
+          format: int32
       additionalProperties: false
+    BindStatus:
+      enum:
+      - Refer
+      - Decline
+      - Quotable
+      - Undetermined
+      type: string
     Payment:
       type: object
       properties:
@@ -763,138 +867,100 @@ components:
           type: integer
           format: int32
         surchargeAmount:
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
         feeAmount:
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
         totalAmount:
           type: integer
           format: int32
           readOnly: true
       additionalProperties: false
-    StateQuote:
+    ClassCodeQuote:
       required:
-      - catastrophe
-      - classPremium
-      - expenseConstant
-      - experienceModifier
-      - experienceModifierInput
-      - minimumPremium
-      - modifiedPremium
-      - policyTotalEstimatedCost
-      - premiumDiscount
-      - scheduleModifier
-      - scheduleModifierFactor
-      - standardPremium
+      - classCode
+      - description
+      - payroll
+      - percentageOfPayroll
+      - premium
+      - rate
       - state
-      - subjectPremium
-      - taxesAndAssessments
-      - territoryModifier
-      - terrorism
-      - totalEstimatedPremium
-      - totalTaxesAndAssessments
       type: object
       properties:
-        catastropheRate:
-          type: number
-          format: double
-          nullable: true
-        deductible:
+        classCode:
+          type: string
+        description:
+          type: string
+        payroll:
           type: integer
           format: int32
-          nullable: true
-        experienceModifierInput:
-          type: number
-          format: double
-        scheduleModifierFactor:
-          type: number
-          format: double
         state:
           type: string
-        terrorismRiskInsuranceAct:
-          type: number
-          format: double
-          nullable: true
-        premiumDiscountRate:
-          type: number
-          format: double
-          nullable: true
-        territoryModifierFactor:
-          type: number
-          format: double
-          nullable: true
-        balanceToMinimumPremium:
+        premium:
           type: integer
           format: int32
-          nullable: true
-        dividendFactor:
+        rate:
           type: number
           format: double
-          nullable: true
-        catastrophe:
+        percentageOfPayroll:
           type: number
           format: double
-        classPremium:
-          type: number
+      additionalProperties: false
+    InstantBindStatus:
+      enum:
+      - Unspecified
+      - Ineligible
+      - Eligible
+      - Pending
+      - Failed
+      - Succeeded
+      type: string
+    BusinessAddress:
+      type: object
+      properties:
+        line1:
+          type:
+          - string
+          - 'null'
+        line2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        county:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        latitude:
+          type:
+          - number
+          - 'null'
           format: double
-        expenseConstant:
-          type: number
+        longitude:
+          type:
+          - number
+          - 'null'
           format: double
-        experienceModifier:
-          type: number
-          format: double
-        liabilityLimits:
-          type: integer
-          format: int32
-          nullable: true
-        minimumPremium:
-          type: integer
-          format: int32
-        modifiedPremium:
-          type: integer
-          format: int32
-        policyTotalEstimatedCost:
-          type: number
-          format: double
-        premiumDiscount:
-          type: integer
-          format: int32
-        scheduleModifier:
-          type: number
-          format: double
-        standardPremium:
-          type: integer
-          format: int32
-        subjectPremium:
-          type: integer
-          format: int32
-        taxesAndAssessments:
-          type: array
-          items:
-            $ref: '#/components/schemas/TaxDetails'
-        totalTaxesAndAssessments:
-          type: number
-          format: double
-        terrorism:
-          type: number
-          format: double
-        totalEstimatedPremium:
-          type: number
-          format: double
-        blanketWaiver:
-          type: integer
-          format: int32
-          nullable: true
-        specificWaiver:
-          type: integer
-          format: int32
-          nullable: true
-        territoryModifier:
-          type: integer
-          format: int32
       additionalProperties: false
   securitySchemes:
     bearer:

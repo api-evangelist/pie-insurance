@@ -1,13 +1,7 @@
 {
   "provider": "pie-insurance",
   "sources": [
-    "pie-insurance-appetite-api-openapi.yml",
-    "pie-insurance-classcodesearch-api-openapi.yml",
-    "pie-insurance-eligibility-api-openapi.yml",
-    "pie-insurance-priceindication-api-openapi.yml",
-    "pie-insurance-quotedocument-api-openapi.yml",
-    "pie-insurance-quotepdf-api-openapi.yml",
-    "pie-insurance-quotes-api-openapi.yml"
+    "_original/pie-insurance-partner-api-openapi.yml"
   ],
   "outputs": [
     "pie-insurance-appetite-api-openapi.yml",
@@ -21,6 +15,25 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "pie-insurance-partner-api-openapi.yml: upgraded openapi 3.0.4 -> OpenAPI 3.2.0",
+    "pie-insurance-partner-api-openapi.yml: declared missing tag: Appetite",
+    "pie-insurance-partner-api-openapi.yml: declared missing tag: ClassCodeSearch",
+    "pie-insurance-partner-api-openapi.yml: declared missing tag: Eligibility",
+    "pie-insurance-partner-api-openapi.yml: declared missing tag: PriceIndication",
+    "pie-insurance-partner-api-openapi.yml: declared missing tag: QuoteDocument",
+    "pie-insurance-partner-api-openapi.yml: declared missing tag: QuotePdf",
+    "pie-insurance-partner-api-openapi.yml: declared missing tag: Quotes",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "pie-insurance-appetite-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pie-insurance-classcodesearch-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pie-insurance-eligibility-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pie-insurance-priceindication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pie-insurance-quotedocument-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pie-insurance-quotepdf-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "pie-insurance-quotes-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

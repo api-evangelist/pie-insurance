@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Pie Insurance Quote Api Appetite QuotePdf API
+  title: Pie Insurance Quote Quote PDF API
   version: v1
 servers:
 - url: https://api.post-prod.pieinsurance.com/api/v1
@@ -53,32 +53,41 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
       security:
       - bearer: []
+      summary: Get quote pdf by quote id
+      x-summary-source: derived
+      operationId: getQuotePdfByQuoteId
+      x-operation-id-source: derived
 components:
   schemas:
     ProblemDetails:
       type: object
       properties:
         type:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         title:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         status:
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
         detail:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         instance:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         extensions:
-          type: object
-          additionalProperties:
-            nullable: true
-          nullable: true
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
       additionalProperties: false
   securitySchemes:
     bearer:

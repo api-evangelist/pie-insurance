@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Pie Insurance Quote Api Appetite API
+  title: Pie Insurance Quote Appetite API
   version: v1
 servers:
 - url: https://api.post-prod.pieinsurance.com/api/v1
@@ -13,7 +13,7 @@ paths:
     post:
       tags:
       - Appetite
-      summary: ''
+      summary: Create appetite
       requestBody:
         description: AppetiteRequest
         content:
@@ -112,6 +112,9 @@ paths:
           description: Unsupported Media Type
       security:
       - bearer: []
+      x-summary-source: derived
+      operationId: postAppetite
+      x-operation-id-source: derived
     get:
       tags:
       - Appetite
@@ -191,65 +194,17 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
       security:
       - bearer: []
+      operationId: getAppetite
+      x-operation-id-source: derived
 components:
   schemas:
-    AppetiteRequest:
+    StateAppetiteRequest:
       required:
-      - appetiteFor
+      - code
       type: object
       properties:
-        appetiteFor:
-          minItems: 1
-          type: array
-          items:
-            $ref: '#/components/schemas/RegionAndClassPost'
-      additionalProperties: false
-    ClassCodeSearchBadRequest:
-      type: object
-      properties:
-        validationErrors:
-          type: array
-          items:
-            type: string
-          nullable: true
-      additionalProperties: false
-    RegionAndClassPost:
-      type: object
-      properties:
-        zip:
+        code:
           type: string
-          nullable: true
-        state:
-          type: string
-          nullable: true
-        class:
-          type: string
-          nullable: true
-      additionalProperties: false
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          nullable: true
-        title:
-          type: string
-          nullable: true
-        status:
-          type: integer
-          format: int32
-          nullable: true
-        detail:
-          type: string
-          nullable: true
-        instance:
-          type: string
-          nullable: true
-        extensions:
-          type: object
-          additionalProperties:
-            nullable: true
-          nullable: true
       additionalProperties: false
     StateAppetiteResponse:
       required:
@@ -264,28 +219,90 @@ components:
           items:
             type: string
       additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+        extensions:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+      additionalProperties: false
+    RegionAndClassPost:
+      type: object
+      properties:
+        zip:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        class:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ClassCodeSearchBadRequest:
+      type: object
+      properties:
+        validationErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    AppetiteRequest:
+      required:
+      - appetiteFor
+      type: object
+      properties:
+        appetiteFor:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/RegionAndClassPost'
+      additionalProperties: false
     ClassCodeMatch:
       type: object
       properties:
         value:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         description:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         matches:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             type: string
-          nullable: true
-      additionalProperties: false
-    StateAppetiteRequest:
-      required:
-      - code
-      type: object
-      properties:
-        code:
-          type: string
       additionalProperties: false
   securitySchemes:
     bearer:
