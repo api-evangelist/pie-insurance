@@ -151,17 +151,9 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ValidationProblemDetails:
+    ProblemDetails:
       type: object
       properties:
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type: array
-            items:
-              type: string
         type:
           type:
           - string
@@ -196,272 +188,6 @@ components:
       - Decline
       - Quotable
       type: string
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-        extensions:
-          type:
-          - object
-          - 'null'
-          additionalProperties: {}
-      additionalProperties: false
-    ClassCodeQuestionsRequest:
-      required:
-      - stateClassCodes
-      type: object
-      properties:
-        stateClassCodes:
-          type: array
-          items:
-            type: object
-            properties:
-              AL:
-                type: array
-                items:
-                  type: string
-              AK:
-                type: array
-                items:
-                  type: string
-              AR:
-                type: array
-                items:
-                  type: string
-              AZ:
-                type: array
-                items:
-                  type: string
-              CA:
-                type: array
-                items:
-                  type: string
-              CO:
-                type: array
-                items:
-                  type: string
-              CT:
-                type: array
-                items:
-                  type: string
-              DC:
-                type: array
-                items:
-                  type: string
-              DE:
-                type: array
-                items:
-                  type: string
-              FL:
-                type: array
-                items:
-                  type: string
-              GA:
-                type: array
-                items:
-                  type: string
-              HI:
-                type: array
-                items:
-                  type: string
-              IA:
-                type: array
-                items:
-                  type: string
-              ID:
-                type: array
-                items:
-                  type: string
-              IL:
-                type: array
-                items:
-                  type: string
-              IN:
-                type: array
-                items:
-                  type: string
-              KS:
-                type: array
-                items:
-                  type: string
-              KY:
-                type: array
-                items:
-                  type: string
-              LA:
-                type: array
-                items:
-                  type: string
-              MA:
-                type: array
-                items:
-                  type: string
-              MD:
-                type: array
-                items:
-                  type: string
-              ME:
-                type: array
-                items:
-                  type: string
-              MI:
-                type: array
-                items:
-                  type: string
-              MN:
-                type: array
-                items:
-                  type: string
-              MO:
-                type: array
-                items:
-                  type: string
-              MS:
-                type: array
-                items:
-                  type: string
-              MT:
-                type: array
-                items:
-                  type: string
-              NC:
-                type: array
-                items:
-                  type: string
-              ND:
-                type: array
-                items:
-                  type: string
-              NE:
-                type: array
-                items:
-                  type: string
-              NH:
-                type: array
-                items:
-                  type: string
-              NJ:
-                type: array
-                items:
-                  type: string
-              NM:
-                type: array
-                items:
-                  type: string
-              NV:
-                type: array
-                items:
-                  type: string
-              NY:
-                type: array
-                items:
-                  type: string
-              OK:
-                type: array
-                items:
-                  type: string
-              OH:
-                type: array
-                items:
-                  type: string
-              OR:
-                type: array
-                items:
-                  type: string
-              PA:
-                type: array
-                items:
-                  type: string
-              RI:
-                type: array
-                items:
-                  type: string
-              SC:
-                type: array
-                items:
-                  type: string
-              SD:
-                type: array
-                items:
-                  type: string
-              TN:
-                type: array
-                items:
-                  type: string
-              TX:
-                type: array
-                items:
-                  type: string
-              UT:
-                type: array
-                items:
-                  type: string
-              VA:
-                type: array
-                items:
-                  type: string
-              VT:
-                type: array
-                items:
-                  type: string
-              WA:
-                type: array
-                items:
-                  type: string
-              WI:
-                type: array
-                items:
-                  type: string
-              WV:
-                type: array
-                items:
-                  type: string
-              WY:
-                type: array
-                items:
-                  type: string
-              CW:
-                type: array
-                items:
-                  type: string
-            additionalProperties: false
-      additionalProperties: false
-      description: Class Codes Questions Request for States
-    AnswerDecision:
-      required:
-      - decisionStatus
-      type: object
-      properties:
-        decisionStatus:
-          $ref: '#/components/schemas/DecisionStatus'
-        subQuestionsId:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-            format: uuid
-      additionalProperties: false
     Question:
       required:
       - answersWithDeclineIndication
@@ -808,6 +534,280 @@ components:
                   $ref: '#/components/schemas/Question'
           additionalProperties: false
       additionalProperties: false
+    ValidationProblemDetails:
+      type: object
+      properties:
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+        extensions:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+      additionalProperties: false
+    AnswerDecision:
+      required:
+      - decisionStatus
+      type: object
+      properties:
+        decisionStatus:
+          $ref: '#/components/schemas/DecisionStatus'
+        subQuestionsId:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            format: uuid
+      additionalProperties: false
+    ClassCodeQuestionsRequest:
+      required:
+      - stateClassCodes
+      type: object
+      properties:
+        stateClassCodes:
+          type: array
+          items:
+            type: object
+            properties:
+              AL:
+                type: array
+                items:
+                  type: string
+              AK:
+                type: array
+                items:
+                  type: string
+              AR:
+                type: array
+                items:
+                  type: string
+              AZ:
+                type: array
+                items:
+                  type: string
+              CA:
+                type: array
+                items:
+                  type: string
+              CO:
+                type: array
+                items:
+                  type: string
+              CT:
+                type: array
+                items:
+                  type: string
+              DC:
+                type: array
+                items:
+                  type: string
+              DE:
+                type: array
+                items:
+                  type: string
+              FL:
+                type: array
+                items:
+                  type: string
+              GA:
+                type: array
+                items:
+                  type: string
+              HI:
+                type: array
+                items:
+                  type: string
+              IA:
+                type: array
+                items:
+                  type: string
+              ID:
+                type: array
+                items:
+                  type: string
+              IL:
+                type: array
+                items:
+                  type: string
+              IN:
+                type: array
+                items:
+                  type: string
+              KS:
+                type: array
+                items:
+                  type: string
+              KY:
+                type: array
+                items:
+                  type: string
+              LA:
+                type: array
+                items:
+                  type: string
+              MA:
+                type: array
+                items:
+                  type: string
+              MD:
+                type: array
+                items:
+                  type: string
+              ME:
+                type: array
+                items:
+                  type: string
+              MI:
+                type: array
+                items:
+                  type: string
+              MN:
+                type: array
+                items:
+                  type: string
+              MO:
+                type: array
+                items:
+                  type: string
+              MS:
+                type: array
+                items:
+                  type: string
+              MT:
+                type: array
+                items:
+                  type: string
+              NC:
+                type: array
+                items:
+                  type: string
+              ND:
+                type: array
+                items:
+                  type: string
+              NE:
+                type: array
+                items:
+                  type: string
+              NH:
+                type: array
+                items:
+                  type: string
+              NJ:
+                type: array
+                items:
+                  type: string
+              NM:
+                type: array
+                items:
+                  type: string
+              NV:
+                type: array
+                items:
+                  type: string
+              NY:
+                type: array
+                items:
+                  type: string
+              OK:
+                type: array
+                items:
+                  type: string
+              OH:
+                type: array
+                items:
+                  type: string
+              OR:
+                type: array
+                items:
+                  type: string
+              PA:
+                type: array
+                items:
+                  type: string
+              RI:
+                type: array
+                items:
+                  type: string
+              SC:
+                type: array
+                items:
+                  type: string
+              SD:
+                type: array
+                items:
+                  type: string
+              TN:
+                type: array
+                items:
+                  type: string
+              TX:
+                type: array
+                items:
+                  type: string
+              UT:
+                type: array
+                items:
+                  type: string
+              VA:
+                type: array
+                items:
+                  type: string
+              VT:
+                type: array
+                items:
+                  type: string
+              WA:
+                type: array
+                items:
+                  type: string
+              WI:
+                type: array
+                items:
+                  type: string
+              WV:
+                type: array
+                items:
+                  type: string
+              WY:
+                type: array
+                items:
+                  type: string
+              CW:
+                type: array
+                items:
+                  type: string
+            additionalProperties: false
+      additionalProperties: false
+      description: Class Codes Questions Request for States
   securitySchemes:
     bearer:
       type: http

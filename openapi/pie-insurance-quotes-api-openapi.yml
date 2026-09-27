@@ -576,32 +576,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    QuoteAddressPost:
-      title: Address
-      type: object
-      properties:
-        line1:
-          type:
-          - string
-          - 'null'
-        line2:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        state:
-          $ref: '#/components/schemas/States'
-        zip:
-          type:
-          - string
-          - 'null'
-          description: "Send 5 digit zip code format e.g. 12345\n (9 digit zip is not accepted)"
-        country:
-          $ref: '#/components/schemas/Countries'
-      additionalProperties: false
     EligibilityAnswerPost:
       title: EligibilityAnswer
       required:
@@ -615,156 +589,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    EmployersLiabilityLimits:
-      type: object
-      properties:
-        eachAccident:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        eachEmployee:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        eachPolicy:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    PriorCarrierPost:
-      title: PriorCarrier
-      required:
-      - effectiveDate
-      - expirationDate
-      - lapseInPeriod
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-        effectiveDate:
-          type: string
-          description: Format YYYY-MM-DD
-          format: date
-        expirationDate:
-          type: string
-          description: Format YYYY-MM-DD
-          format: date
-        lapseInPeriod:
-          type: boolean
-          description: Was there a lapse in coverage
-        lapseReason:
-          $ref: '#/components/schemas/LapseReason'
-        lapseReasonDescription:
-          type:
-          - string
-          - 'null'
-          description: Provide description when lapseReason is ‘Other’ or when there is additional lapse information available.
-        policyNumber:
-          type:
-          - string
-          - 'null'
-        modificationFactor:
-          type:
-          - number
-          - 'null'
-          description: Must be decimal number >= 0.1 and less than 10.0
-        totalPremium:
-          type:
-          - number
-          - 'null'
-          description: 'Must be number with no more than 2 decimal places
-
-            e.g. xxx.yy'
-        nonZeroClaimCount:
-          type: integer
-          description: 'The number of claims where the total payout was greater than zero.
-
-            Must be integer >= 0 and less than or equal to 255'
-          format: int32
-        zeroClaimCount:
-          type: integer
-          description: 'The number of claims where the total payout equals zero.
-
-            Must be integer >= 0 and less than or equal to 255'
-          format: int32
-        amountPaid:
-          type:
-          - number
-          - 'null'
-          description: 'Must be number with no more than 2 decimal places
-
-            e.g. xxx.yy'
-        amountReserved:
-          type:
-          - number
-          - 'null'
-          description: 'Must be number with no more than 2 decimal places
-
-            e.g. xxx.yy'
-        amountIncurred:
-          type:
-          - string
-          - 'null'
-          description: 'Must be number with no more than 2 decimal places
-
-            e.g. xxx.yy'
-      additionalProperties: false
-    Payment:
-      type: object
-      properties:
-        premiumAmount:
-          type: integer
-          format: int32
-        surchargeAmount:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        feeAmount:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        totalAmount:
-          type: integer
-          format: int32
-          readOnly: true
-      additionalProperties: false
-    ClassCodeQuote:
-      required:
-      - classCode
-      - description
-      - payroll
-      - percentageOfPayroll
-      - premium
-      - rate
-      - state
-      type: object
-      properties:
-        classCode:
-          type: string
-        description:
-          type: string
-        payroll:
-          type: integer
-          format: int32
-        state:
-          type: string
-        premium:
-          type: integer
-          format: int32
-        rate:
-          type: number
-          format: double
-        percentageOfPayroll:
-          type: number
-          format: double
       additionalProperties: false
     PremiumDetails:
       required:
@@ -851,6 +675,247 @@ components:
           type: integer
           format: int32
       additionalProperties: false
+    BusinessAddress:
+      type: object
+      properties:
+        line1:
+          type:
+          - string
+          - 'null'
+        line2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        county:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        latitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        longitude:
+          type:
+          - number
+          - 'null'
+          format: double
+      additionalProperties: false
+    Countries:
+      enum:
+      - US
+      - USA
+      type: string
+    ExperienceModificationPost:
+      title: ExperienceModification
+      type: object
+      properties:
+        factor:
+          type:
+          - number
+          - 'null'
+          description: Valid values are >= 0.1 and less than 10.0
+        type:
+          type:
+          - string
+          - 'null'
+          description: 'Acceptable string values for all states (except California)
+
+            "Actual"
+
+            "Contingent"
+
+            "Estimated" (default value)
+
+            "Preliminary"
+
+            "Tentative"
+
+
+            Acceptable string values for California
+
+            "Actual"
+
+            "Expiring"
+
+            "Tentative" (default value)'
+        date:
+          type:
+          - string
+          - 'null'
+          description: 'Format YYYY-MM-DD
+
+            Required when type is "Actual"
+
+            Optional for all other values of Type
+
+            Default value to current day'
+          format: date
+        riskId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PriorCarrierPost:
+      title: PriorCarrier
+      required:
+      - effectiveDate
+      - expirationDate
+      - lapseInPeriod
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        effectiveDate:
+          type: string
+          description: Format YYYY-MM-DD
+          format: date
+        expirationDate:
+          type: string
+          description: Format YYYY-MM-DD
+          format: date
+        lapseInPeriod:
+          type: boolean
+          description: Was there a lapse in coverage
+        lapseReason:
+          $ref: '#/components/schemas/LapseReason'
+        lapseReasonDescription:
+          type:
+          - string
+          - 'null'
+          description: Provide description when lapseReason is ‘Other’ or when there is additional lapse information available.
+        policyNumber:
+          type:
+          - string
+          - 'null'
+        modificationFactor:
+          type:
+          - number
+          - 'null'
+          description: Must be decimal number >= 0.1 and less than 10.0
+        totalPremium:
+          type:
+          - number
+          - 'null'
+          description: 'Must be number with no more than 2 decimal places
+
+            e.g. xxx.yy'
+        nonZeroClaimCount:
+          type: integer
+          description: 'The number of claims where the total payout was greater than zero.
+
+            Must be integer >= 0 and less than or equal to 255'
+          format: int32
+        zeroClaimCount:
+          type: integer
+          description: 'The number of claims where the total payout equals zero.
+
+            Must be integer >= 0 and less than or equal to 255'
+          format: int32
+        amountPaid:
+          type:
+          - number
+          - 'null'
+          description: 'Must be number with no more than 2 decimal places
+
+            e.g. xxx.yy'
+        amountReserved:
+          type:
+          - number
+          - 'null'
+          description: 'Must be number with no more than 2 decimal places
+
+            e.g. xxx.yy'
+        amountIncurred:
+          type:
+          - string
+          - 'null'
+          description: 'Must be number with no more than 2 decimal places
+
+            e.g. xxx.yy'
+      additionalProperties: false
+    QuoteRequestPost:
+      title: Request
+      type: object
+      properties:
+        namedInsured:
+          type:
+          - string
+          - 'null'
+          description: Do not include the 'doing business as' name in this field.  Use the DBA field in the LegalEntity Object.
+        effectiveDate:
+          type:
+          - string
+          - 'null'
+          description: " Format YYYY-MM-DD\nMust be between tomorrow's date and 120 from current date\n (today + 120 days >= effectiveDate >= tomorrow)"
+          format: date
+        partnerAgentFirstName:
+          type:
+          - string
+          - 'null'
+        partnerAgentLastName:
+          type:
+          - string
+          - 'null'
+        partnerAgentEmail:
+          type:
+          - string
+          - 'null'
+        expirationDate:
+          type:
+          - string
+          - 'null'
+          description: 'Format YYYY-MM-DD
+
+            Must be exactly one year after effectiveDate'
+          format: date
+        description:
+          type:
+          - string
+          - 'null'
+        workersCompensation:
+          $ref: '#/components/schemas/WorkCompPolicyPost'
+        mailingAddress:
+          $ref: '#/components/schemas/QuoteAddressPost'
+        contacts:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QuoteContactPost'
+        eligibilityAnswers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/EligibilityAnswerPost'
+      additionalProperties: false
+    ContactTypes:
+      enum:
+      - Accounting
+      - Claims
+      - Inspection
+      - Client
+      - Other
+      type: string
     NotCoveredReason:
       enum:
       - NonPayment
@@ -859,67 +924,177 @@ components:
       - Other
       - NewBusiness
       type: string
-    ValidationProblemDetails:
+    Payment:
       type: object
       properties:
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
+        premiumAmount:
+          type: integer
+          format: int32
+        surchargeAmount:
           type:
           - integer
           - 'null'
           format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-        extensions:
-          type:
-          - object
-          - 'null'
-          additionalProperties: {}
-      additionalProperties: false
-    QuoteStatePost:
-      title: State
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/States'
-        experienceModification:
-          $ref: '#/components/schemas/ExperienceModificationPost'
-        uian:
+        feeAmount:
           type:
           - integer
           - 'null'
-          description: Required by some states
-        blanketWaiver:
+          format: int32
+        totalAmount:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+    ClassCodeQuote:
+      required:
+      - classCode
+      - description
+      - payroll
+      - percentageOfPayroll
+      - premium
+      - rate
+      - state
+      type: object
+      properties:
+        classCode:
+          type: string
+        description:
+          type: string
+        payroll:
+          type: integer
+          format: int32
+        state:
+          type: string
+        premium:
+          type: integer
+          format: int32
+        rate:
+          type: number
+          format: double
+        percentageOfPayroll:
+          type: number
+          format: double
+      additionalProperties: false
+    QuoteExposurePost:
+      title: Exposure
+      type: object
+      properties:
+        class:
+          type:
+          - string
+          - 'null'
+          description: "Subclasses not currently accepted\n \n Must be integer with 1-4 digits"
+        payroll:
+          type:
+          - integer
+          - 'null'
+          description: Valid range is >= 0 and less than 1,000,000,000
+          format: int32
+      additionalProperties: false
+    LapseReason:
+      enum:
+      - NonPayment
+      - AuditNonCompliance
+      - NoEmployees
+      - Other
+      type: string
+    Contact:
+      required:
+      - email
+      - firstName
+      - lastName
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type:
+          - string
+          - 'null'
+        email:
+          type: string
+        agentEnteredEmail:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EmployersLiabilityLimits:
+      type: object
+      properties:
+        eachAccident:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        eachEmployee:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        eachPolicy:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    QuoteContactPost:
+      title: QuoteContact
+      type: object
+      properties:
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+          description: Must match pattern 012-345-6789 or 0123456789
+        email:
+          type:
+          - string
+          - 'null'
+          description: Must be valid email format e.g. email@domain.com
+        type:
+          $ref: '#/components/schemas/ContactTypes'
+      additionalProperties: false
+    WorkCompPolicyPost:
+      title: WorkCompPolicy
+      type: object
+      properties:
+        currentlyCovered:
           type:
           - boolean
           - 'null'
-        locations:
+          description: Are you currently covered by Worker's Compensation Policy if false then supply a reason
+        notCurrentlyCoveredReason:
+          $ref: '#/components/schemas/NotCoveredReason'
+        notCurrentlyCoveredDescription:
+          type:
+          - string
+          - 'null'
+          description: Provide description when notCurrentlyCoveredReason is ‘Other’ or when there is additional lapse information available.
+        legalEntities:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/QuoteLocationPost'
+            $ref: '#/components/schemas/QuoteLegalEntityPost'
+          description: Only 1 legal entity is allowed
+        employersLiability:
+          $ref: '#/components/schemas/EmployersLiabilityLimitsPost'
+        priorCarriers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PriorCarrierPost'
       additionalProperties: false
     EmployersLiabilityLimitsPost:
       title: EmployersLiabilityLimits
@@ -971,36 +1146,88 @@ components:
 
             If the state is CA, must select limits of 1M or greater.'
       additionalProperties: false
-    QuoteLocationPost:
-      title: Location
+    ProblemDetails:
       type: object
       properties:
-        address:
-          $ref: '#/components/schemas/QuoteAddressPost'
-        exposure:
+        type:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/QuoteExposurePost'
-          description: Officers class payroll should also be included here
-        officers:
+        title:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/QuoteOfficerPost'
-          description: If Officer has payroll, please add it to the array of Exposure as any other exposure.
-        fullTimeEmployeeCount:
+        status:
           type:
           - integer
           - 'null'
           format: int32
-        partTimeEmployeeCount:
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+        extensions:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+      additionalProperties: false
+    BusinessTypes:
+      enum:
+      - Individual
+      - Partnership
+      - Corporation
+      - LimitedLiabilityCompany
+      - Other
+      type: string
+    BindStatus:
+      enum:
+      - Refer
+      - Decline
+      - Quotable
+      - Undetermined
+      type: string
+    ValidationProblemDetails:
+      type: object
+      properties:
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
           type:
           - integer
           - 'null'
           format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+        extensions:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
       additionalProperties: false
     TaxDetails:
       type: object
@@ -1020,28 +1247,141 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    BindStatus:
+    QuoteAddressPost:
+      title: Address
+      type: object
+      properties:
+        line1:
+          type:
+          - string
+          - 'null'
+        line2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          $ref: '#/components/schemas/States'
+        zip:
+          type:
+          - string
+          - 'null'
+          description: "Send 5 digit zip code format e.g. 12345\n (9 digit zip is not accepted)"
+        country:
+          $ref: '#/components/schemas/Countries'
+      additionalProperties: false
+    States:
       enum:
-      - Refer
-      - Decline
-      - Quotable
-      - Undetermined
+      - AL
+      - AK
+      - AR
+      - AZ
+      - CA
+      - CO
+      - CT
+      - DC
+      - DE
+      - FL
+      - GA
+      - HI
+      - IA
+      - ID
+      - IL
+      - IN
+      - KS
+      - KY
+      - LA
+      - MA
+      - MD
+      - ME
+      - MI
+      - MN
+      - MO
+      - MS
+      - MT
+      - NC
+      - ND
+      - NE
+      - NH
+      - NJ
+      - NM
+      - NV
+      - NY
+      - OK
+      - OH
+      - OR
+      - PA
+      - RI
+      - SC
+      - SD
+      - TN
+      - TX
+      - UT
+      - VA
+      - VT
+      - WA
+      - WI
+      - WV
+      - WY
+      - CW
       type: string
-    BusinessTypes:
-      enum:
-      - Individual
-      - Partnership
-      - Corporation
-      - LimitedLiabilityCompany
-      - Other
-      type: string
-    LapseReason:
-      enum:
-      - NonPayment
-      - AuditNonCompliance
-      - NoEmployees
-      - Other
-      type: string
+    QuoteLegalEntityPost:
+      title: LegalEntity
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        doingBusinessAs:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        businessType:
+          $ref: '#/components/schemas/BusinessTypes'
+        taxId:
+          type:
+          - string
+          - 'null'
+          description: '9 digit number, no dashes
+
+            e.g. 123456789'
+        sicCode:
+          type:
+          - integer
+          - 'null'
+          description: Must be 4 digit number
+        naicsCode:
+          type:
+          - integer
+          - 'null'
+          description: Must be 6 digit number
+        yearStarted:
+          type:
+          - integer
+          - 'null'
+          description: 'Must be after 1800 and equal to or before current year
+
+            e.g. Current year >= year started >= 1800'
+        website:
+          type:
+          - string
+          - 'null'
+          description: Must be valid URL
+        states:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QuoteStatePost'
+          description: Currently only 1 state allowed
+      additionalProperties: false
+      description: Currently only a single legal entity quote is supported through the quote api
     QuoteRequestPut:
       title: PutRequest
       type: object
@@ -1097,6 +1437,179 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/EligibilityAnswerPost'
+      additionalProperties: false
+    QuoteLocationPost:
+      title: Location
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/QuoteAddressPost'
+        exposure:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QuoteExposurePost'
+          description: Officers class payroll should also be included here
+        officers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QuoteOfficerPost'
+          description: If Officer has payroll, please add it to the array of Exposure as any other exposure.
+        fullTimeEmployeeCount:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        partTimeEmployeeCount:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    QuoteStatePost:
+      title: State
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/States'
+        experienceModification:
+          $ref: '#/components/schemas/ExperienceModificationPost'
+        uian:
+          type:
+          - integer
+          - 'null'
+          description: Required by some states
+        blanketWaiver:
+          type:
+          - boolean
+          - 'null'
+        locations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/QuoteLocationPost'
+      additionalProperties: false
+    QuoteOfficerPost:
+      title: Officer
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        duties:
+          type:
+          - string
+          - 'null'
+        ownershipPercentage:
+          type:
+          - number
+          - 'null'
+        birthDate:
+          type:
+          - string
+          - 'null'
+          description: Format YYYY-MM-DD
+          format: date
+      additionalProperties: false
+    QuoteResponse:
+      required:
+      - agencyId
+      - classCodeQuotes
+      - effectiveDate
+      - employersLiabilityLimits
+      - installments
+      - insuranceCompany
+      - insuredAddress
+      - namedInsured
+      - premiumDetails
+      - quoteDate
+      - stateQuotes
+      type: object
+      properties:
+        referReasons:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        declineReasons:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        namedInsured:
+          type: string
+        insuredAddress:
+          $ref: '#/components/schemas/BusinessAddress'
+        agencyId:
+          type: string
+          format: uuid
+        effectiveDate:
+          type: string
+        employersLiabilityLimits:
+          $ref: '#/components/schemas/EmployersLiabilityLimits'
+        quoteDate:
+          type: string
+        insuranceCompany:
+          type: string
+        classCodeQuotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassCodeQuote'
+        stateQuotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/StateQuote'
+        primaryStateQuotes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/StateQuote'
+        premiumDetails:
+          $ref: '#/components/schemas/PremiumDetails'
+        installments:
+          type: object
+          properties:
+            full:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/Payment'
+            semiannual:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/Payment'
+            quarterly:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/Payment'
+            monthly:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/Payment'
+          additionalProperties: false
+        isDirty:
+          type: boolean
+        warningMessage:
+          type:
+          - string
+          - 'null'
+        contacts:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Contact'
+        instantBindStatus:
+          $ref: '#/components/schemas/InstantBindStatus'
+        bindStatus:
+          $ref: '#/components/schemas/BindStatus'
       additionalProperties: false
     StateQuote:
       required:
@@ -1229,263 +1742,6 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    ContactTypes:
-      enum:
-      - Accounting
-      - Claims
-      - Inspection
-      - Client
-      - Other
-      type: string
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-        extensions:
-          type:
-          - object
-          - 'null'
-          additionalProperties: {}
-      additionalProperties: false
-    QuoteLegalEntityPost:
-      title: LegalEntity
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-        doingBusinessAs:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        businessType:
-          $ref: '#/components/schemas/BusinessTypes'
-        taxId:
-          type:
-          - string
-          - 'null'
-          description: '9 digit number, no dashes
-
-            e.g. 123456789'
-        sicCode:
-          type:
-          - integer
-          - 'null'
-          description: Must be 4 digit number
-        naicsCode:
-          type:
-          - integer
-          - 'null'
-          description: Must be 6 digit number
-        yearStarted:
-          type:
-          - integer
-          - 'null'
-          description: 'Must be after 1800 and equal to or before current year
-
-            e.g. Current year >= year started >= 1800'
-        website:
-          type:
-          - string
-          - 'null'
-          description: Must be valid URL
-        states:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QuoteStatePost'
-          description: Currently only 1 state allowed
-      additionalProperties: false
-      description: Currently only a single legal entity quote is supported through the quote api
-    QuoteRequestPost:
-      title: Request
-      type: object
-      properties:
-        namedInsured:
-          type:
-          - string
-          - 'null'
-          description: Do not include the 'doing business as' name in this field.  Use the DBA field in the LegalEntity Object.
-        effectiveDate:
-          type:
-          - string
-          - 'null'
-          description: " Format YYYY-MM-DD\nMust be between tomorrow's date and 120 from current date\n (today + 120 days >= effectiveDate >= tomorrow)"
-          format: date
-        partnerAgentFirstName:
-          type:
-          - string
-          - 'null'
-        partnerAgentLastName:
-          type:
-          - string
-          - 'null'
-        partnerAgentEmail:
-          type:
-          - string
-          - 'null'
-        expirationDate:
-          type:
-          - string
-          - 'null'
-          description: 'Format YYYY-MM-DD
-
-            Must be exactly one year after effectiveDate'
-          format: date
-        description:
-          type:
-          - string
-          - 'null'
-        workersCompensation:
-          $ref: '#/components/schemas/WorkCompPolicyPost'
-        mailingAddress:
-          $ref: '#/components/schemas/QuoteAddressPost'
-        contacts:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QuoteContactPost'
-        eligibilityAnswers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/EligibilityAnswerPost'
-      additionalProperties: false
-    QuoteOfficerPost:
-      title: Officer
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-        duties:
-          type:
-          - string
-          - 'null'
-        ownershipPercentage:
-          type:
-          - number
-          - 'null'
-        birthDate:
-          type:
-          - string
-          - 'null'
-          description: Format YYYY-MM-DD
-          format: date
-      additionalProperties: false
-    Contact:
-      required:
-      - email
-      - firstName
-      - lastName
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        phone:
-          type:
-          - string
-          - 'null'
-        email:
-          type: string
-        agentEnteredEmail:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    States:
-      enum:
-      - AL
-      - AK
-      - AR
-      - AZ
-      - CA
-      - CO
-      - CT
-      - DC
-      - DE
-      - FL
-      - GA
-      - HI
-      - IA
-      - ID
-      - IL
-      - IN
-      - KS
-      - KY
-      - LA
-      - MA
-      - MD
-      - ME
-      - MI
-      - MN
-      - MO
-      - MS
-      - MT
-      - NC
-      - ND
-      - NE
-      - NH
-      - NJ
-      - NM
-      - NV
-      - NY
-      - OK
-      - OH
-      - OR
-      - PA
-      - RI
-      - SC
-      - SD
-      - TN
-      - TX
-      - UT
-      - VA
-      - VT
-      - WA
-      - WI
-      - WV
-      - WY
-      - CW
-      type: string
-    InstantBindStatus:
-      enum:
-      - Unspecified
-      - Ineligible
-      - Eligible
-      - Pending
-      - Failed
-      - Succeeded
-      type: string
     QuoteDeclineResponse:
       type: object
       properties:
@@ -1498,271 +1754,15 @@ components:
         bindStatus:
           $ref: '#/components/schemas/BindStatus'
       additionalProperties: false
-    QuoteContactPost:
-      title: QuoteContact
-      type: object
-      properties:
-        firstName:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-          description: Must match pattern 012-345-6789 or 0123456789
-        email:
-          type:
-          - string
-          - 'null'
-          description: Must be valid email format e.g. email@domain.com
-        type:
-          $ref: '#/components/schemas/ContactTypes'
-      additionalProperties: false
-    Countries:
+    InstantBindStatus:
       enum:
-      - US
-      - USA
+      - Unspecified
+      - Ineligible
+      - Eligible
+      - Pending
+      - Failed
+      - Succeeded
       type: string
-    QuoteResponse:
-      required:
-      - agencyId
-      - classCodeQuotes
-      - effectiveDate
-      - employersLiabilityLimits
-      - installments
-      - insuranceCompany
-      - insuredAddress
-      - namedInsured
-      - premiumDetails
-      - quoteDate
-      - stateQuotes
-      type: object
-      properties:
-        referReasons:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        declineReasons:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        namedInsured:
-          type: string
-        insuredAddress:
-          $ref: '#/components/schemas/BusinessAddress'
-        agencyId:
-          type: string
-          format: uuid
-        effectiveDate:
-          type: string
-        employersLiabilityLimits:
-          $ref: '#/components/schemas/EmployersLiabilityLimits'
-        quoteDate:
-          type: string
-        insuranceCompany:
-          type: string
-        classCodeQuotes:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClassCodeQuote'
-        stateQuotes:
-          type: array
-          items:
-            $ref: '#/components/schemas/StateQuote'
-        primaryStateQuotes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/StateQuote'
-        premiumDetails:
-          $ref: '#/components/schemas/PremiumDetails'
-        installments:
-          type: object
-          properties:
-            full:
-              type: object
-              additionalProperties:
-                $ref: '#/components/schemas/Payment'
-            semiannual:
-              type: object
-              additionalProperties:
-                $ref: '#/components/schemas/Payment'
-            quarterly:
-              type: object
-              additionalProperties:
-                $ref: '#/components/schemas/Payment'
-            monthly:
-              type: object
-              additionalProperties:
-                $ref: '#/components/schemas/Payment'
-          additionalProperties: false
-        isDirty:
-          type: boolean
-        warningMessage:
-          type:
-          - string
-          - 'null'
-        contacts:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Contact'
-        instantBindStatus:
-          $ref: '#/components/schemas/InstantBindStatus'
-        bindStatus:
-          $ref: '#/components/schemas/BindStatus'
-      additionalProperties: false
-    QuoteExposurePost:
-      title: Exposure
-      type: object
-      properties:
-        class:
-          type:
-          - string
-          - 'null'
-          description: "Subclasses not currently accepted\n \n Must be integer with 1-4 digits"
-        payroll:
-          type:
-          - integer
-          - 'null'
-          description: Valid range is >= 0 and less than 1,000,000,000
-          format: int32
-      additionalProperties: false
-    ExperienceModificationPost:
-      title: ExperienceModification
-      type: object
-      properties:
-        factor:
-          type:
-          - number
-          - 'null'
-          description: Valid values are >= 0.1 and less than 10.0
-        type:
-          type:
-          - string
-          - 'null'
-          description: 'Acceptable string values for all states (except California)
-
-            "Actual"
-
-            "Contingent"
-
-            "Estimated" (default value)
-
-            "Preliminary"
-
-            "Tentative"
-
-
-            Acceptable string values for California
-
-            "Actual"
-
-            "Expiring"
-
-            "Tentative" (default value)'
-        date:
-          type:
-          - string
-          - 'null'
-          description: 'Format YYYY-MM-DD
-
-            Required when type is "Actual"
-
-            Optional for all other values of Type
-
-            Default value to current day'
-          format: date
-        riskId:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    WorkCompPolicyPost:
-      title: WorkCompPolicy
-      type: object
-      properties:
-        currentlyCovered:
-          type:
-          - boolean
-          - 'null'
-          description: Are you currently covered by Worker's Compensation Policy if false then supply a reason
-        notCurrentlyCoveredReason:
-          $ref: '#/components/schemas/NotCoveredReason'
-        notCurrentlyCoveredDescription:
-          type:
-          - string
-          - 'null'
-          description: Provide description when notCurrentlyCoveredReason is ‘Other’ or when there is additional lapse information available.
-        legalEntities:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/QuoteLegalEntityPost'
-          description: Only 1 legal entity is allowed
-        employersLiability:
-          $ref: '#/components/schemas/EmployersLiabilityLimitsPost'
-        priorCarriers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/PriorCarrierPost'
-      additionalProperties: false
-    BusinessAddress:
-      type: object
-      properties:
-        line1:
-          type:
-          - string
-          - 'null'
-        line2:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        state:
-          type:
-          - string
-          - 'null'
-        zip:
-          type:
-          - string
-          - 'null'
-        county:
-          type:
-          - string
-          - 'null'
-        country:
-          type:
-          - string
-          - 'null'
-        latitude:
-          type:
-          - number
-          - 'null'
-          format: double
-        longitude:
-          type:
-          - number
-          - 'null'
-          format: double
-      additionalProperties: false
   securitySchemes:
     bearer:
       type: http

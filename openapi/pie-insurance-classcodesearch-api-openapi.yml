@@ -143,6 +143,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ClassCodeSearchBadRequest:
+      type: object
+      properties:
+        validationErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
     ProblemDetails:
       type: object
       properties:
@@ -208,16 +218,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    ClassCodeSearchBadRequest:
-      type: object
-      properties:
-        validationErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
       additionalProperties: false
   securitySchemes:
     bearer:

@@ -198,27 +198,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    StateAppetiteRequest:
-      required:
-      - code
-      type: object
-      properties:
-        code:
-          type: string
-      additionalProperties: false
-    StateAppetiteResponse:
-      required:
-      - classCodes
-      - state
-      type: object
-      properties:
-        state:
-          type: string
-        classCodes:
-          type: array
-          items:
-            type: string
-      additionalProperties: false
     ProblemDetails:
       type: object
       properties:
@@ -265,16 +244,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ClassCodeSearchBadRequest:
-      type: object
-      properties:
-        validationErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     AppetiteRequest:
       required:
       - appetiteFor
@@ -285,6 +254,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RegionAndClassPost'
+      additionalProperties: false
+    StateAppetiteRequest:
+      required:
+      - code
+      type: object
+      properties:
+        code:
+          type: string
       additionalProperties: false
     ClassCodeMatch:
       type: object
@@ -301,6 +278,29 @@ components:
           type:
           - array
           - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ClassCodeSearchBadRequest:
+      type: object
+      properties:
+        validationErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    StateAppetiteResponse:
+      required:
+      - classCodes
+      - state
+      type: object
+      properties:
+        state:
+          type: string
+        classCodes:
+          type: array
           items:
             type: string
       additionalProperties: false
