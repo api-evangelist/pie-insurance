@@ -151,9 +151,17 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ProblemDetails:
+    ValidationProblemDetails:
       type: object
       properties:
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: array
+            items:
+              type: string
         type:
           type:
           - string
@@ -180,37 +188,6 @@ components:
           - object
           - 'null'
           additionalProperties: {}
-      additionalProperties: false
-    DecisionStatus:
-      enum:
-      - Undetermined
-      - Refer
-      - Decline
-      - Quotable
-      type: string
-    Question:
-      required:
-      - answersWithDeclineIndication
-      - id
-      - isSubQuestion
-      - questionContent
-      - type
-      type: object
-      properties:
-        type:
-          type: string
-        questionUnit:
-          type:
-          - string
-          - 'null'
-        questionContent:
-          type: string
-        isSubQuestion:
-          type: boolean
-        answersWithDeclineIndication:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/AnswerDecision'
       additionalProperties: false
     ClassCodeQuestionsResponse:
       required:
@@ -534,58 +511,29 @@ components:
                   $ref: '#/components/schemas/Question'
           additionalProperties: false
       additionalProperties: false
-    ValidationProblemDetails:
-      type: object
-      properties:
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-        extensions:
-          type:
-          - object
-          - 'null'
-          additionalProperties: {}
-      additionalProperties: false
-    AnswerDecision:
+    Question:
       required:
-      - decisionStatus
+      - answersWithDeclineIndication
+      - id
+      - isSubQuestion
+      - questionContent
+      - type
       type: object
       properties:
-        decisionStatus:
-          $ref: '#/components/schemas/DecisionStatus'
-        subQuestionsId:
+        type:
+          type: string
+        questionUnit:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            type: string
-            format: uuid
+        questionContent:
+          type: string
+        isSubQuestion:
+          type: boolean
+        answersWithDeclineIndication:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/AnswerDecision'
       additionalProperties: false
     ClassCodeQuestionsRequest:
       required:
@@ -808,6 +756,58 @@ components:
             additionalProperties: false
       additionalProperties: false
       description: Class Codes Questions Request for States
+    AnswerDecision:
+      required:
+      - decisionStatus
+      type: object
+      properties:
+        decisionStatus:
+          $ref: '#/components/schemas/DecisionStatus'
+        subQuestionsId:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            format: uuid
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+        extensions:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+      additionalProperties: false
+    DecisionStatus:
+      enum:
+      - Undetermined
+      - Refer
+      - Decline
+      - Quotable
+      type: string
   securitySchemes:
     bearer:
       type: http

@@ -143,15 +143,23 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ClassCodeSearchBadRequest:
+    ClassCodeSearchRequest:
+      required:
+      - state
       type: object
       properties:
-        validationErrors:
+        state:
+          type: string
+          description: State must be abbreviated. ie. CO
+        searchTerm:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            type: string
+          description: Search term must be at least two characters.
+        businessName:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     ProblemDetails:
       type: object
@@ -183,6 +191,16 @@ components:
           - 'null'
           additionalProperties: {}
       additionalProperties: false
+    ClassCodeSearchBadRequest:
+      type: object
+      properties:
+        validationErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
     ClassCodeMatch:
       type: object
       properties:
@@ -200,24 +218,6 @@ components:
           - 'null'
           items:
             type: string
-      additionalProperties: false
-    ClassCodeSearchRequest:
-      required:
-      - state
-      type: object
-      properties:
-        state:
-          type: string
-          description: State must be abbreviated. ie. CO
-        searchTerm:
-          type:
-          - string
-          - 'null'
-          description: Search term must be at least two characters.
-        businessName:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
   securitySchemes:
     bearer:
