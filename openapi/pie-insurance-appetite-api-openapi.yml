@@ -198,17 +198,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    AppetiteRequest:
-      required:
-      - appetiteFor
-      type: object
-      properties:
-        appetiteFor:
-          minItems: 1
-          type: array
-          items:
-            $ref: '#/components/schemas/RegionAndClassPost'
-      additionalProperties: false
     ClassCodeSearchBadRequest:
       type: object
       properties:
@@ -216,37 +205,6 @@ components:
           type:
           - array
           - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    ClassCodeMatch:
-      type: object
-      properties:
-        value:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        matches:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    StateAppetiteResponse:
-      required:
-      - classCodes
-      - state
-      type: object
-      properties:
-        state:
-          type: string
-        classCodes:
-          type: array
           items:
             type: string
       additionalProperties: false
@@ -265,6 +223,19 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    StateAppetiteResponse:
+      required:
+      - classCodes
+      - state
+      type: object
+      properties:
+        state:
+          type: string
+        classCodes:
+          type: array
+          items:
+            type: string
       additionalProperties: false
     ProblemDetails:
       type: object
@@ -296,6 +267,17 @@ components:
           - 'null'
           additionalProperties: {}
       additionalProperties: false
+    AppetiteRequest:
+      required:
+      - appetiteFor
+      type: object
+      properties:
+        appetiteFor:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/RegionAndClassPost'
+      additionalProperties: false
     StateAppetiteRequest:
       required:
       - code
@@ -303,6 +285,24 @@ components:
       properties:
         code:
           type: string
+      additionalProperties: false
+    ClassCodeMatch:
+      type: object
+      properties:
+        value:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        matches:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
   securitySchemes:
     bearer:
