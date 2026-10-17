@@ -143,6 +143,34 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ClassCodeSearchBadRequest:
+      type: object
+      properties:
+        validationErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ClassCodeMatch:
+      type: object
+      properties:
+        value:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        matches:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
     ClassCodeSearchRequest:
       required:
       - state
@@ -190,34 +218,6 @@ components:
           - object
           - 'null'
           additionalProperties: {}
-      additionalProperties: false
-    ClassCodeSearchBadRequest:
-      type: object
-      properties:
-        validationErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    ClassCodeMatch:
-      type: object
-      properties:
-        value:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        matches:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
       additionalProperties: false
   securitySchemes:
     bearer:

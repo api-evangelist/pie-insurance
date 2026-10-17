@@ -189,36 +189,6 @@ components:
           - 'null'
           additionalProperties: {}
       additionalProperties: false
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-        extensions:
-          type:
-          - object
-          - 'null'
-          additionalProperties: {}
-      additionalProperties: false
     Question:
       required:
       - answersWithDeclineIndication
@@ -250,6 +220,36 @@ components:
       - Decline
       - Quotable
       type: string
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+        extensions:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+      additionalProperties: false
     ClassCodeQuestionsRequest:
       required:
       - stateClassCodes

@@ -198,16 +198,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ClassCodeSearchBadRequest:
-      type: object
-      properties:
-        validationErrors:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
     RegionAndClassPost:
       type: object
       properties:
@@ -236,6 +226,14 @@ components:
           type: array
           items:
             type: string
+      additionalProperties: false
+    StateAppetiteRequest:
+      required:
+      - code
+      type: object
+      properties:
+        code:
+          type: string
       additionalProperties: false
     ProblemDetails:
       type: object
@@ -267,24 +265,15 @@ components:
           - 'null'
           additionalProperties: {}
       additionalProperties: false
-    AppetiteRequest:
-      required:
-      - appetiteFor
+    ClassCodeSearchBadRequest:
       type: object
       properties:
-        appetiteFor:
-          minItems: 1
-          type: array
+        validationErrors:
+          type:
+          - array
+          - 'null'
           items:
-            $ref: '#/components/schemas/RegionAndClassPost'
-      additionalProperties: false
-    StateAppetiteRequest:
-      required:
-      - code
-      type: object
-      properties:
-        code:
-          type: string
+            type: string
       additionalProperties: false
     ClassCodeMatch:
       type: object
@@ -303,6 +292,17 @@ components:
           - 'null'
           items:
             type: string
+      additionalProperties: false
+    AppetiteRequest:
+      required:
+      - appetiteFor
+      type: object
+      properties:
+        appetiteFor:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/RegionAndClassPost'
       additionalProperties: false
   securitySchemes:
     bearer:
