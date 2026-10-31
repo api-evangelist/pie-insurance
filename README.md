@@ -1,4 +1,4 @@
-# Pie Insurance (pie-insurance)
+# Pie Insurance
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,93 +66,112 @@
 
 Pie Insurance is a Washington, DC and Denver-based insurtech founded in May 2017 that makes commercial insurance for small businesses, with workers' compensation as its flagship line. Pie underwrites its own workers' comp through The Pie Insurance Company (NAIC 21857) — the carrier formerly known as Pie Casualty Insurance Company, which Pie acquired as Western Select Insurance Company in 2021 and took full-stack in February 2023 with an A- (Excellent) rating from AM Best. In addition to workers' comp, Pie offers business owners policy (BOP), commercial auto, general liability, professional liability, and errors and omissions through partner carriers. The product is sold both direct-to-business and through a partner network of 4,000+ independent insurance agencies, who quote, bind, and service policies via the Pie agency portal and the Pie Partner API. The Partner API (api.post-prod.pieinsurance.com, REST/JSON, documented with OpenAPI 3.0.4) exposes class-code search, eligibility questions, appetite checks, price indications, full bindable quotes, quote documents, and quote PDF retrieval so agency management systems and partner platforms can embed the Pie workers' comp experience without redirecting users off-platform. Coverage is available in 39 states plus DC; 73% of submissions are auto-decided and average quote time is roughly three minutes. The company has raised approximately $621M across Seed through Series D from investors including Allianz X, SVB Capital, Greycroft, Aspect Ventures, and Elefund. CEO and co-founder is John Swigart. The Pie Partner API is the public developer surface; there is no broader open-source SDK or GitHub organization.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/pie-insurance/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/pie-insurance/refs/heads/main/apis.yml)
+**Areas:** Insurance · Insurtech · Workers Compensation · Small Business · Commercial Insurance · Business Owners Policy · Commercial Auto · General Liability · Professional Liability · Agency Portal · Partner API · Quoting
 
-## Scope
+## Pie Insurance on APIs.io
 
-- **Type:** Index
-- **Position:** Provider
-- **Access:** 3rd-Party
+Everything profiled for Pie Insurance is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/pie-insurance/](https://apis.io/providers/pie-insurance/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (8)
 
-- Insurance
-- Insurtech
-- Workers Compensation
-- Small Business
-- Commercial Insurance
-- Business Owners Policy
-- Commercial Auto
-- General Liability
-- Professional Liability
-- Agency Portal
-- Partner API
-- Quoting
-- Binding
+- [Pie Insurance Appetite API](https://apis.io/apis/pie-insurance/pie-insurance-appetite-api/) — The Appetite API from Pie Insurance — 1 operation(s) for appetite.
+- [Pie Insurance ClassCodeSearch API](https://apis.io/apis/pie-insurance/pie-insurance-classcodesearch-api/) — The ClassCodeSearch API from Pie Insurance — 1 operation(s) for classcodesearch.
+- [Pie Insurance Eligibility API](https://apis.io/apis/pie-insurance/pie-insurance-eligibility-api/) — The Eligibility API from Pie Insurance — 1 operation(s) for eligibility.
+- [Pie Insurance PriceIndication API](https://apis.io/apis/pie-insurance/pie-insurance-priceindication-api/) — The PriceIndication API from Pie Insurance — 2 operation(s) for priceindication.
+- [Pie Insurance QuoteDocument API](https://apis.io/apis/pie-insurance/pie-insurance-quotedocument-api/) — The QuoteDocument API from Pie Insurance — 1 operation(s) for quotedocument.
+- [Pie Insurance QuotePdf API](https://apis.io/apis/pie-insurance/pie-insurance-quotepdf-api/) — The QuotePdf API from Pie Insurance — 1 operation(s) for quotepdf.
+- [Pie Insurance Quotes API](https://apis.io/apis/pie-insurance/pie-insurance-quotes-api/) — The Quotes API from Pie Insurance — 2 operation(s) for quotes.
+- [Pie Insurance Partner API](https://apis.io/apis/pie-insurance/pie-partner-api/) — REST API for approved partners to access Pie Insurance workers compensation quoting and binding workflows. Supports appetite checking, price indication,…
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Pie Insurance Partner API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-REST/JSON Partner API (OpenAPI 3.0.4) that lets independent agencies and partner platforms quote and bind Pie workers' compensation insurance without leaving their own experience. Endpoints cover class-code search, eligibility questions, appetite (single-class and full-state catalog), price indications, full bindable quotes with create/get/update, quote document upload, and quote PDF retrieval. Base URL https://api.post-prod.pieinsurance.com/api/v1. Credentials are issued by Pie partner onboarding; Swagger UI is published at api.post-prod.pieinsurance.com/api/docs.
+- [Pie Insurance Agentic Access](https://apis.io/agentic-access/pie-insurance/pie-insurance-agentic-access/)
 
-- **Human URL:** [https://www.pieinsurance.com/agency/api](https://www.pieinsurance.com/agency/api)
-- **Base URL:** `https://api.post-prod.pieinsurance.com/api/v1`
+#### Collections (8)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Insurance
-- Workers Compensation
-- Quoting
-- Binding
-- Appetite
-- Class Codes
-- Eligibility
-- Partner API
+- [Pie Insurance Quote Api Appetite API](https://apis.io/collections/pie-insurance/open-pie-insurance-appetite-api/)
+- [Pie Insurance Quote Api Appetite ClassCodeSearch API](https://apis.io/collections/pie-insurance/open-pie-insurance-classcodesearch-api/)
+- [Pie Insurance Quote Api Appetite Eligibility API](https://apis.io/collections/pie-insurance/open-pie-insurance-eligibility-api/)
+- [Pie Insurance Quote Api](https://apis.io/collections/pie-insurance/open-pie-insurance-partner-api/)
+- [Pie Insurance Quote Api Appetite PriceIndication API](https://apis.io/collections/pie-insurance/open-pie-insurance-priceindication-api/)
+- [Pie Insurance Quote Api Appetite QuoteDocument API](https://apis.io/collections/pie-insurance/open-pie-insurance-quotedocument-api/)
+- [Pie Insurance Quote Api Appetite QuotePdf API](https://apis.io/collections/pie-insurance/open-pie-insurance-quotepdf-api/)
+- [Pie Insurance Quote Api Appetite Quotes API](https://apis.io/collections/pie-insurance/open-pie-insurance-quotes-api/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://www.pieinsurance.com/agency/api)
-- [Documentation](https://api.post-prod.pieinsurance.com/api/docs/index.html)
-- [Swagger](https://api.post-prod.pieinsurance.com/api/docs/v1/swagger.json)
-- [OpenAPI](openapi/pie-insurance-partner-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/pie-insurance-partner-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/pie-insurance-partner-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Pie Insurance Authentication](https://apis.io/security/pie-insurance/pie-insurance-authentication/)
+- [Pie Insurance Domain Security](https://apis.io/security/pie-insurance/pie-insurance-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.pieinsurance.com)
-- [Portal](https://www.pieinsurance.com/agency)
 - [Documentation](https://www.pieinsurance.com/agency/api)
-- [Sign Up](https://www.pieinsurance.com/agency/partner-with-pie)
-- [Login](https://partner.pieinsurance.com/)
-- [Documentation](https://www.pieinsurance.com/agency/appetite-checker)
-- [Documentation](https://www.pieinsurance.com/agency/resources)
-- [About](https://www.pieinsurance.com/about)
-- [Timeline](https://www.pieinsurance.com/about/timeline)
-- [Leadership](https://www.pieinsurance.com/about/leadership)
-- [Press](https://www.pieinsurance.com/media)
 - [Blog](https://www.pieinsurance.com/blog)
-- [Careers](https://www.pieinsurance.com/culture/careers)
-- [Contact](https://www.pieinsurance.com/contact)
-- [Terms of Service](https://www.pieinsurance.com/legal/terms-of-use)
-- [Privacy Policy](https://www.pieinsurance.com/legal/privacy-policy)
-- [LinkedIn](https://www.linkedin.com/company/pieinsurance)
-- [Twitter](https://twitter.com/pieinsurance)
-- [Facebook](https://www.facebook.com/pieinsurance)
-- [Products](https://www.pieinsurance.com/coverage/workers-compensation-insurance)
-- [Products](https://www.pieinsurance.com/coverage/business-owners-policy)
-- [Products](https://www.pieinsurance.com/coverage/commercial-auto-insurance)
-- [Products](https://www.pieinsurance.com/coverage/general-liability-insurance)
-- [Products](https://www.pieinsurance.com/coverage/professional-liability-insurance)
-- [Features](undefined)
+- [Terms of service](https://www.pieinsurance.com/legal/terms-of-use)
+- [Privacy policy](https://www.pieinsurance.com/legal/privacy-policy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 27.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 67.9 |
+| Contract quality | 46.3 |
+| Contract governance | 0.0 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 17.1 |
+
+**Agent readiness 28.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 14.0** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/pie-insurance/](https://apis.io/providers/pie-insurance/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Pie Insurance: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/pie-insurance/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
